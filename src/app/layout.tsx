@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bonafidemakeover.com";
+
+const title = "Bonafide Makeover | Kumasi Bridal Artistry";
+const description =
+  "Bridal, traditional, and occasion makeup from a studio in Apemso, Kumasi — near KNUST.";
+
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
@@ -18,9 +24,31 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Bonafide Makeover | Kumasi Bridal Artistry",
-  description:
-    "Bridal, traditional, and occasion makeup from a studio in Apemso, Kumasi — near KNUST. She is mostly in Kumasi.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    type: "website",
+    locale: "en_GH",
+    url: "/",
+    siteName: "Bonafide Makeover",
+    title,
+    description,
+    images: [
+      {
+        url: "/images/IMG_1734.jpg",
+        width: 1284,
+        height: 1685,
+        alt: "Bonafide Makeover bridal makeup, Kumasi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/images/IMG_1734.jpg"],
+  },
 };
 
 export default function RootLayout({

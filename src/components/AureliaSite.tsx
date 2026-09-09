@@ -126,6 +126,7 @@ function InstagramCard({
 
 export function AureliaSite() {
   const [filter, setFilter] = useState<GalleryFilter>("all");
+  const [menuOpen, setMenuOpen] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(10863);
@@ -239,6 +240,23 @@ export function AureliaSite() {
     setPlaying(true);
   }
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
   const visible = (item: Exclude<GalleryFilter, "all">) => filter === "all" || filter === item;
   const stackedVisible = visible("bridal") || visible("glow");
 
@@ -250,31 +268,29 @@ export function AureliaSite() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(32,26,23,0.03)]">
-        <div className="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between gap-space-md">
-          <div className="flex items-center gap-space-sm">
-            <a className="flex items-center gap-space-sm" href="#about">
-              <span className="h-8 w-8 rounded-lg bg-primary text-on-primary font-title-editorial italic flex items-center justify-center text-sm">
-                BM
+        <div className="mx-auto flex h-16 max-w-[1360px] items-center justify-between gap-3 px-4 sm:h-20 sm:px-margin-mobile lg:px-margin-desktop">
+          <a className="flex min-w-0 items-center gap-2 sm:gap-space-sm" href="#about" onClick={closeMenu}>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary font-title-editorial text-sm italic text-on-primary">
+              BM
+            </span>
+            <span className="flex min-w-0 flex-col">
+              <span className="truncate font-title-editorial text-[17px] leading-none tracking-tight text-on-surface sm:text-title-editorial">
+                Bonafide Makeover
               </span>
-              <span className="flex flex-col">
-                <span className="font-title-editorial text-title-editorial tracking-tight text-on-surface leading-none">
-                  Bonafide Makeover
-                </span>
-                  <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest mt-space-xxs">
-                  Kumasi Studio · Near KNUST
-                </span>
+              <span className="mt-space-xxs hidden truncate font-label-caps text-[10px] uppercase tracking-widest text-secondary sm:block sm:text-label-caps">
+                Kumasi Studio · Near KNUST
               </span>
-            </a>
-          </div>
-          <nav className="hidden xl:flex items-center gap-space-lg">
+            </span>
+          </a>
+          <nav className="hidden items-center gap-space-lg xl:flex">
             {NAV.map((link) => (
               <a
                 key={link.label}
                 aria-current={"current" in link && link.current ? "page" : undefined}
                 className={
                   "current" in link && link.current
-                    ? "relative py-space-xs uppercase transition-colors after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-secondary after:transition-all text-primary font-medium after:w-full"
-                    : "relative py-space-xs font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-secondary hover:after:w-full after:transition-all"
+                    ? "relative py-space-xs uppercase text-primary font-medium after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-secondary after:transition-all"
+                    : "relative py-space-xs font-label-caps text-label-caps uppercase text-on-surface-variant transition-colors after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-secondary after:transition-all hover:text-on-surface hover:after:w-full"
                 }
                 href={link.href}
               >
@@ -282,9 +298,9 @@ export function AureliaSite() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-space-md">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-space-md">
             <a
-              className="hidden sm:flex items-center gap-space-xxs font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors"
+              className="hidden items-center gap-space-xxs font-label-sm text-label-sm text-on-surface-variant transition-colors hover:text-secondary xl:flex"
               href="https://instagram.com/bonafide_makeover"
               rel="noopener noreferrer"
               target="_blank"
@@ -293,32 +309,77 @@ export function AureliaSite() {
               <span>@bonafide_makeover</span>
             </a>
             <a
-              className="inline-flex items-center justify-center px-space-md py-space-xs bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider rounded-lg hover:bg-inverse-surface hover:text-inverse-on-surface transition-all transform hover:-translate-y-[1px] shadow-[0_4px_14px_rgba(0,0,0,0.06)]"
+              className="hidden items-center justify-center rounded-lg bg-primary px-space-md py-space-xs font-label-caps text-label-caps uppercase tracking-wider text-on-primary shadow-[0_4px_14px_rgba(0,0,0,0.06)] transition-all hover:-translate-y-[1px] hover:bg-inverse-surface hover:text-inverse-on-surface xl:inline-flex"
               href="#consultation-desk"
             >
               Reserve Appointment
             </a>
-            <div className="flex items-center pl-space-xxs">
-              <img
-                alt="Bonafide Makeover"
-                className="w-8 h-8 rounded-full object-cover shadow-[0_0_0_1px_rgba(118,89,55,0.2)]"
-                src={images.portrait}
-              />
-            </div>
+            <img
+              alt="Bonafide Makeover"
+              className="hidden h-8 w-8 rounded-full object-cover shadow-[0_0_0_1px_rgba(118,89,55,0.2)] sm:block"
+              src={images.portrait}
+            />
+            <button
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-on-surface xl:hidden"
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span className="material-symbols-outlined text-[28px]">{menuOpen ? "close" : "menu"}</span>
+            </button>
           </div>
         </div>
+        {menuOpen && (
+          <nav className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-outline-variant/40 bg-surface px-4 py-4 xl:hidden">
+            <div className="flex flex-col">
+              {NAV.map((link) => (
+                <a
+                  key={link.label}
+                  className="border-b border-outline-variant/30 py-4 font-label-caps text-label-caps uppercase tracking-widest text-on-surface"
+                  href={link.href}
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+            <a
+              className="mt-4 flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant"
+              href="https://instagram.com/bonafide_makeover"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span className="material-symbols-outlined text-[18px]">photo_camera</span>
+              <span>@bonafide_makeover</span>
+            </a>
+            <a
+              className="mt-3 inline-flex font-body-sm text-on-surface-variant"
+              href="tel:+233554435360"
+            >
+              +233 554435360
+            </a>
+            <a
+              className="mt-5 flex w-full items-center justify-center rounded-lg bg-primary px-space-md py-4 font-label-caps text-label-caps uppercase tracking-wider text-on-primary"
+              href="#consultation-desk"
+              onClick={closeMenu}
+            >
+              Reserve Appointment
+            </a>
+          </nav>
+        )}
       </header>
 
-      <main className="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]">
+      <main className="w-full bg-surface pt-16 sm:pt-20 min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-80px)]">
         <div className="flex flex-col w-full selection:bg-secondary-container selection:text-on-secondary-container overflow-hidden">
           <section className="relative w-full px-margin-mobile lg:px-margin-desktop pt-space-xl lg:pt-space-2xl pb-space-3xl" id="about">
             <div className="absolute top-10 left-1/4 w-[480px] h-[480px] bg-secondary-fixed-dim/20 rounded-full blur-[120px] pointer-events-none -z-10" />
             <div className="absolute bottom-0 right-10 w-[540px] h-[540px] bg-tertiary-fixed/30 rounded-full blur-[140px] pointer-events-none -z-10" />
             <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
               <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1 space-y-space-lg">
-                <div className="inline-flex items-center gap-space-xs self-start px-space-sm py-space-xxs bg-surface-container-high/70 rounded-full shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                  <span className="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
+                <div className="inline-flex max-w-full items-center gap-space-xs self-start rounded-full bg-surface-container-high/70 px-space-sm py-space-xxs shadow-sm">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" />
+                  <span className="font-label-caps text-[10px] uppercase leading-snug tracking-widest text-on-surface-variant sm:text-label-caps">
                     Mostly in Kumasi · Apemso, near KNUST
                   </span>
                 </div>
@@ -403,7 +464,7 @@ export function AureliaSite() {
                     <span className="font-body-sm text-[11px] text-on-surface-variant">Soft glow for Kumasi evenings</span>
                   </div>
                 </div>
-                <div className="absolute -top-6 -right-4 w-20 h-20 rounded-full bg-secondary-container/90 backdrop-blur-md flex flex-col items-center justify-center text-on-secondary-container shadow-md rotate-12">
+                <div className="absolute -top-4 right-2 flex h-16 w-16 flex-col items-center justify-center rounded-full bg-secondary-container/90 text-on-secondary-container shadow-md rotate-12 backdrop-blur-md sm:-right-4 sm:-top-6 sm:h-20 sm:w-20">
                   <span className="font-label-caps text-[8px] uppercase tracking-widest leading-none">Couture</span>
                   <span className="font-title-editorial text-base italic leading-tight">BM</span>
                   <span className="font-label-caps text-[7px] uppercase tracking-tighter text-on-secondary-fixed-variant">Kumasi</span>
@@ -432,7 +493,7 @@ export function AureliaSite() {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-space-lg w-full md:w-auto justify-between md:justify-end">
+              <div className="flex w-full flex-wrap items-center justify-between gap-3 md:w-auto md:justify-end md:gap-space-lg">
                 <div className={playing ? "" : "opacity-30 wave-paused"}>
                   <SoundBars />
                 </div>
@@ -445,7 +506,8 @@ export function AureliaSite() {
                   onClick={togglePlayback}
                 >
                   <span className="material-symbols-outlined text-[16px]">{playing ? "pause" : "play_arrow"}</span>
-                  <span>{playing ? "Background Ambience: ON" : "Background Ambience: PAUSED"}</span>
+                  <span className="hidden sm:inline">{playing ? "Background Ambience: ON" : "Background Ambience: PAUSED"}</span>
+                  <span className="sm:hidden">{playing ? "On" : "Play"}</span>
                 </button>
               </div>
             </div>
@@ -813,7 +875,7 @@ export function AureliaSite() {
                           rows={3}
                         />
                       </div>
-                      <div className="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-xs">
+                      <div className="flex flex-col items-center gap-4 border-t border-outline-variant/40 pt-4">
                         <div className="flex items-center gap-2">
                           <input className="rounded accent-secondary" id="ndaCheck" type="checkbox" />
                           <label className="font-body-sm text-[12px] text-on-surface-variant" htmlFor="ndaCheck">
@@ -821,10 +883,10 @@ export function AureliaSite() {
                           </label>
                         </div>
                         <button
-                          className="w-full sm:w-auto inline-flex items-center justify-center px-space-xl py-space-sm bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider rounded-lg shadow-md hover:bg-inverse-surface hover:text-inverse-on-surface transform hover:-translate-y-[1px] transition-all"
+                          className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 font-label-caps text-[10px] uppercase tracking-[0.16em] text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.08)] transition-colors hover:bg-inverse-surface"
                           type="submit"
                         >
-                          Submit Reservation Request
+                          Submit request
                         </button>
                       </div>
                     </form>
@@ -840,13 +902,13 @@ export function AureliaSite() {
         <div id="fastcar-player" />
       </div>
 
-      <aside className="fixed bottom-space-lg right-space-lg z-40 bg-surface-container-low/90 backdrop-blur-xl rounded-full px-space-md py-space-xs shadow-[0_16px_36px_rgba(32,26,23,0.08)] flex items-center gap-space-sm">
+      <aside className="fixed bottom-3 left-3 right-3 z-40 flex max-w-full items-center gap-2 rounded-full bg-surface-container-low/90 px-3 py-2 shadow-[0_16px_36px_rgba(32,26,23,0.08)] backdrop-blur-xl sm:bottom-space-lg sm:left-auto sm:right-space-lg sm:w-auto sm:gap-space-sm sm:px-space-md">
         <div className={`w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container ${playing ? "animate-spin-slow" : ""}`}>
           <span className="material-symbols-outlined text-[14px]">album</span>
         </div>
-        <div className="flex flex-col">
+        <div className="flex min-w-0 flex-1 flex-col sm:flex-none">
           <span className="font-label-caps text-[9px] uppercase tracking-wider text-secondary">Now Playing</span>
-          <span className="font-body-sm text-[11px] text-on-surface whitespace-nowrap">Healing In His Presence</span>
+          <span className="max-w-[9.5rem] truncate font-body-sm text-[11px] text-on-surface sm:max-w-none">Healing In His Presence</span>
         </div>
         <div className={playing ? "" : "opacity-30 wave-paused"}>
           <SoundBars compact />
