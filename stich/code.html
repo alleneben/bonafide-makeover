@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}@keyframes soundwave{0%,100%{height:4px;}50%{height:16px;}}@keyframes spinSlow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}.animate-spin-slow{animation:spinSlow 14s linear infinite;}.wave-bar-1{animation:soundwave 1.1s ease-in-out infinite;}.wave-bar-2{animation:soundwave 0.8s ease-in-out 0.2s infinite;}.wave-bar-3{animation:soundwave 1.3s ease-in-out 0.4s infinite;}.wave-bar-4{animation:soundwave 0.9s ease-in-out 0.1s infinite;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-high":"#ebe8e2","on-secondary-fixed-variant":"#5c4222","on-primary-fixed":"#201a17","surface-tint":"#655d59","primary-fixed-dim":"#d0c4bf","primary-fixed":"#ede0db","tertiary-fixed":"#f2dfd7","surface-dim":"#dcdad4","inverse-surface":"#31312d","tertiary-container":"#231915","background":"#fcf9f3","on-secondary-fixed":"#2b1700","outline":"#7f7570","error":"#ba1a1a","surface-container":"#f0eee8","primary-container":"#201a17","surface-container-lowest":"#ffffff","on-background":"#1c1c18","on-tertiary-fixed":"#231915","on-primary":"#ffffff","primary":"#000000","on-secondary":"#ffffff","surface-container-low":"#f6f3ed","error-container":"#ffdad6","surface-variant":"#e5e2dc","on-primary-fixed-variant":"#4d4541","on-surface":"#1c1c18","surface-container-highest":"#e5e2dc","secondary-fixed":"#ffddb9","on-tertiary":"#ffffff","on-primary-container":"#8c827d","tertiary-fixed-dim":"#d5c3bc","on-error-container":"#93000a","on-secondary-container":"#795b3a","surface":"#fcf9f3","surface-bright":"#fcf9f3","on-error":"#ffffff","inverse-on-surface":"#f3f0ea","on-surface-variant":"#4e4541","tertiary":"#000000","on-tertiary-container":"#90817b","outline-variant":"#d1c4be","inverse-primary":"#d0c4bf","secondary-container":"#fed6ac","secondary":"#765937","on-tertiary-fixed-variant":"#51443f","secondary-fixed-dim":"#e6c097"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin-desktop":"5rem","space-lg":"1.5rem","space-sm":"0.75rem","gutter-mobile":"1rem","space-4xl":"10rem","space-xs":"0.5rem","space-2xl":"4rem","space-xl":"2.5rem","gutter-desktop":"2rem","space-xxs":"0.25rem","margin-mobile":"1.5rem","space-md":"1rem","space-3xl":"6.5rem"},"fontFamily":{"headline-lg":["Playfair Display"],"display-xl":["Playfair Display"],"title-editorial":["Playfair Display"],"body-sm":["Plus Jakarta Sans"],"label-caps":["Plus Jakarta Sans"],"headline-sm":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"display-xl-mobile":["Playfair Display"],"label-sm":["Plus Jakarta Sans"],"headline-md":["Playfair Display"]},"fontSize":{"headline-lg":["48px",{"lineHeight":"56px","letterSpacing":"-0.01em","fontWeight":"400"}],"display-xl":["72px",{"lineHeight":"80px","letterSpacing":"-0.02em","fontWeight":"400"}],"title-editorial":["20px",{"lineHeight":"28px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"400"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.15em","fontWeight":"600"}],"headline-sm":["24px",{"lineHeight":"32px","fontWeight":"500"}],"headline-lg-mobile":["32px",{"lineHeight":"38px","letterSpacing":"0em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"26px","letterSpacing":"0.01em","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"30px","letterSpacing":"0.01em","fontWeight":"300"}],"display-xl-mobile":["44px",{"lineHeight":"50px","letterSpacing":"-0.01em","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-md":["32px",{"lineHeight":"40px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(32,26,23,0.03)]"><div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="Aurelia Vaux Haute Beauté Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XI8YbTe-U_Qjg-ceoBBg537f42OKQ0ONXmpjCWHPr2vv-S1lzrEeHg7mfUOXkJyNO6OTrgaI2NubrexBzVlVeYCR6_Kw9EViZ0dtDDX405JpE1iP6lCrgZD0sdVdZA65bx9Nk5vtCpQtHFHb7Uv0Wv4TcZY2gIQ_4zceNlffJMizJWP_CH9J_8VYs02saDO8g1SFajUXR_yvkDvPWO2JPt5qH93kAeRAYXgh9HEG2B-XyT0g9_5w5KflCn"/><a class="flex flex-col" data-path="portfolio" href="#"><span class="font-title-editorial text-title-editorial tracking-tight text-on-surface leading-none">Aurelia Vaux</span><span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest mt-space-xxs">Haute Beauté &amp; Bridal</span></a></div><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-medium after:w-full"><a aria-current="page" class="relative py-space-xs uppercase transition-colors after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-secondary after:transition-all text-primary font-medium after:w-full" data-path="portfolio" href="#">Portfolio</a><a class="relative py-space-xs font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-secondary hover:after:w-full after:transition-all" data-path="bridal-suite" href="#">Bridal Suite</a><a class="relative py-space-xs font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-secondary hover:after:w-full after:transition-all" data-path="editorial" href="#">Editorial</a><a class="relative py-space-xs font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-secondary hover:after:w-full after:transition-all" data-path="about-aurelia" href="#">About Aurelia</a><a class="relative py-space-xs font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-secondary hover:after:w-full after:transition-all" data-path="services-and-rates" href="#">Services &amp; Rates</a><a class="relative py-space-xs font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-secondary hover:after:w-full after:transition-all" data-path="client-inquiries" href="#">Inquiries</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:flex items-center gap-space-xxs font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="https://instagram.com" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[16px]">photo_camera</span><span>@aureliavauxmakeup</span></a><a class="inline-flex items-center justify-center px-space-md py-space-xs bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider rounded-lg hover:bg-inverse-surface hover:text-inverse-on-surface transition-all transform hover:-translate-y-[1px] shadow-[0_4px_14px_rgba(0,0,0,0.06)]" data-path="reserve-appointment" href="#">Reserve Appointment</a><div class="flex items-center pl-space-xxs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_0_0_1px_rgba(118,89,55,0.2)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADsvK3SvSf6wE7esOaP6XoZd9MVqjFkVTQ7fPg3xBoB9Atk9g4nLyDPUYeXscmNkaJz49dwmMjwgob4w7bu-xg0vRQ0UG3btcPzlYCrVNbyeV6GCBLcq9qwLT-pkdW9jUKlyrzalgKOPMHoMX_Zm2Sh3bPkP8CmJK6T7ysGObJnch4QG7On0vW1dhiabExpT8R6E_PiTUBNZGIU6SQux0FZFCJqUFsRbHVx7Cb7kEIideMGIZ5I-rOvA"/></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full selection:bg-secondary-container selection:text-on-secondary-container overflow-hidden">
+<!-- ============================================================ -->
+<!-- HERO SECTION: GRAND COUTURE EDITORIAL SPLIT                 -->
+<!-- ============================================================ -->
+<section class="relative w-full px-margin-mobile lg:px-margin-desktop pt-space-xl lg:pt-space-2xl pb-space-3xl">
+<!-- Atmospheric subtle background glow -->
+<div class="absolute top-10 left-1/4 w-[480px] h-[480px] bg-secondary-fixed-dim/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="absolute bottom-0 right-10 w-[540px] h-[540px] bg-tertiary-fixed/30 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<div class="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Left Column: Typographic Drama & Call to Actions -->
+<div class="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1 space-y-space-lg">
+<!-- Atelier Tagline / Monogram badge -->
+<div class="inline-flex items-center gap-space-xs self-start px-space-sm py-space-xxs bg-surface-container-high/70 rounded-full shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Paris &amp; New York Atelier · Worldwide Booking</span>
+</div>
+<!-- Grand Couture Headline -->
+<div class="space-y-space-xs">
+<p class="font-label-caps text-label-caps uppercase tracking-[0.25em] text-secondary">Aurelia Vaux Haute Beauté</p>
+<h1 class="font-display-xl text-display-xl tracking-tight text-on-surface leading-[1.04]">
+            The Art of <br class="hidden sm:inline"/>
+<span class="italic font-normal text-secondary">Radiant</span> Perfection.
+          </h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+          Celebrity, editorial, and high-couture bridal makeup artistry crafting hyper-refined skin dewdrops, ethereal silhouettes, and timeless grace for the world’s most discerning women.
+        </p>
+<!-- CTA Action Cluster -->
+<div class="pt-space-xs flex flex-wrap items-center gap-space-md">
+<a class="inline-flex items-center justify-center px-space-xl py-space-sm bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider rounded-lg shadow-md hover:bg-inverse-surface hover:text-inverse-on-surface transform hover:-translate-y-[2px] transition-all" href="#masterpiece-gallery">
+            Explore Selected Works
+          </a>
+<button class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-surface-container text-on-surface font-label-caps text-label-caps uppercase tracking-wider rounded-lg hover:bg-surface-container-high transition-all" id="reelTriggerBtn" type="button">
+<span class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] ml-0.5">play_arrow</span>
+</span>
+<span>Watch Backstage Reel</span>
+</button>
+</div>
+<!-- Metrics Ticker Bar -->
+<div class="pt-space-lg grid grid-cols-3 gap-space-md max-w-lg">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">12+</span>
+<span class="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider mt-1">Years Red Carpet &amp; Fashion Week</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">VOGUE</span>
+<span class="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider mt-1">Editorial &amp; Runway Regular</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">350+</span>
+<span class="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider mt-1">Bespoke Brides Globally</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Asymmetric Editorial Framing (Artist + Signature Look) -->
+<div class="lg:col-span-5 order-1 lg:order-2 relative">
+<!-- Main Artist Portrait (Image 4) -->
+<div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-xl bg-surface-container">
+<img alt="Aurelia Vaux Editorial Makeup Artist Portrait" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADsvK3SvSf6wE7esOaP6XoZd9MVqjFkVTQ7fPg3xBoB9Atk9g4nLyDPUYeXscmNkaJz49dwmMjwgob4w7bu-xg0vRQ0UG3btcPzlYCrVNbyeV6GCBLcq9qwLT-pkdW9jUKlyrzalgKOPMHoMX_Zm2Sh3bPkP8CmJK6T7ysGObJnch4QG7On0vW1dhiabExpT8R6E_PiTUBNZGIU6SQux0FZFCJqUFsRbHVx7Cb7kEIideMGIZ5I-rOvA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-on-primary">
+<span class="font-label-caps text-[10px] uppercase tracking-widest text-secondary-fixed">Master Atelier Lead</span>
+<p class="font-title-editorial text-title-editorial italic leading-tight">Madame Aurelia Vaux</p>
+<span class="font-body-sm text-body-sm text-surface-dim">Directing Fashion Week Backstage &amp; Destination Suites</span>
+</div>
+</div>
+<!-- Overlapping Accent Card (Lookbook Teaser) -->
+<div class="hidden sm:flex absolute -bottom-8 -left-10 bg-surface-container-lowest/95 backdrop-blur-md p-space-sm rounded-xl shadow-xl max-w-xs items-center gap-space-sm -rotate-1 hover:rotate-0 transition-transform">
+<div class="w-16 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img alt="Met Gala Beauty Detail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHRMKXCS5a1XkkmrNoxltIye_RUuWX2P-1sBBgJ7ZPmmxGdMyySabYEIgle2MFrrPGZ83qnYhMr8DzEkfw4tnIpR2RfGWzBaAd6V2aVyyvdyRufw4IgXmyjxdRWvRWak1QlEyGddS_3zeF9qyf0VvLDwCAgOnZlqdJ7wP7jdssOvLDucv4DAJdn7acuw9HKYmFKuDTdoUVBwjISrQRPzgXGBg3pIR-vYMFz-YzVORmqmk5Ahe-Rw-J9w"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-[10px] uppercase tracking-widest">Iconic Radiance</span>
+</div>
+<p class="font-title-editorial text-body-sm font-medium text-on-surface leading-snug">Met Gala Diamond Dew Series</p>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Signature glass skin technique</span>
+</div>
+</div>
+<!-- Floating Parisian Monogram Stamp -->
+<div class="absolute -top-6 -right-4 w-20 h-20 rounded-full bg-secondary-container/90 backdrop-blur-md flex flex-col items-center justify-center text-on-secondary-container shadow-md rotate-12">
+<span class="font-label-caps text-[8px] uppercase tracking-widest leading-none">Couture</span>
+<span class="font-title-editorial text-base italic leading-tight">AV</span>
+<span class="font-label-caps text-[7px] uppercase tracking-tighter text-on-secondary-variant">Paris</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- INTERACTIVE AMBIENT SOUNDSCAPE BANNER                        -->
+<!-- ============================================================ -->
+<section class="w-full px-margin-mobile lg:px-margin-desktop py-space-xs">
+<div class="max-w-[1360px] mx-auto bg-surface-container-low rounded-xl p-space-md lg:p-space-lg shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+<!-- Track Meta & Icon -->
+<div class="flex items-center gap-space-md w-full md:w-auto">
+<div class="relative w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">graphic_eq</span>
+<div class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-surface"></div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-[10px] uppercase text-secondary tracking-widest">Acoustic Atmosphere</span>
+<span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-label-caps uppercase bg-secondary-container text-on-secondary-container">Master Ambient</span>
+</div>
+<span class="font-title-editorial text-title-editorial text-on-surface">Erik Satie — Gymnopédie No. 1</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Curated Parisian Bridal Suite Soundscape · Silk Acoustic Rework</span>
+</div>
+</div>
+<!-- Equalizer Visualizer & Controls -->
+<div class="flex items-center gap-space-lg w-full md:w-auto justify-between md:justify-end">
+<!-- Frequency equalizer wave bars -->
+<div class="flex items-end gap-1 h-6 px-space-sm bg-surface-container rounded-lg" id="soundBarsContainer">
+<span class="w-[3px] bg-secondary rounded-full wave-bar-1 h-4"></span>
+<span class="w-[3px] bg-secondary rounded-full wave-bar-2 h-2"></span>
+<span class="w-[3px] bg-secondary rounded-full wave-bar-3 h-5"></span>
+<span class="w-[3px] bg-secondary rounded-full wave-bar-4 h-3"></span>
+<span class="w-[3px] bg-secondary rounded-full wave-bar-2 h-6"></span>
+<span class="w-[3px] bg-secondary rounded-full wave-bar-1 h-2"></span>
+<span class="w-[3px] bg-secondary rounded-full wave-bar-3 h-4"></span>
+</div>
+<!-- Duration indicator -->
+<span class="font-label-caps text-[11px] text-on-surface-variant font-mono" id="audioTimer">01:42 / 04:18</span>
+<!-- Master Sound Toggle -->
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs bg-primary text-on-primary rounded-lg font-label-caps text-label-caps uppercase tracking-wider hover:bg-inverse-surface transition-all shadow-sm" id="toggleAmbienceBtn" type="button">
+<span class="material-symbols-outlined text-[16px]" id="ambiencePlayIcon">pause</span>
+<span id="ambienceBtnText">Background Ambience: ON</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- CURATED MASTERPIECE GALLERY WITH FILTER TABS                 -->
+<!-- ============================================================ -->
+<section class="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="masterpiece-gallery">
+<div class="max-w-[1360px] mx-auto flex flex-col space-y-space-xl">
+<!-- Section Header & Filter Tabs -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="space-y-space-xxs max-w-xl">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-[1px] bg-secondary"></span>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Portfolio Archive</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Curated Masterpieces</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Explore haute couture wedding aesthetics, editorial magazine cover executions, and iconic red-carpet beauty recipes.
+          </p>
+</div>
+<!-- Category Filters -->
+<div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-1.5 rounded-lg shadow-sm">
+<button class="gallery-tab active px-space-md py-space-xs rounded font-label-caps text-label-caps uppercase tracking-wider bg-primary text-on-primary transition-colors" data-category="all" type="button">All Works</button>
+<button class="gallery-tab px-space-md py-space-xs rounded font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" data-category="editorial" type="button">High Fashion</button>
+<button class="gallery-tab px-space-md py-space-xs rounded font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" data-category="bridal" type="button">Bridal Couture</button>
+<button class="gallery-tab px-space-md py-space-xs rounded font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" data-category="glow" type="button">Bronze &amp; Glass Skin</button>
+</div>
+</div>
+<!-- Asymmetrical Editorial Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-lg items-start">
+<!-- CARD 1: VOGUE COVER / GRAPHIC EYES (Image 3) -->
+<div class="gallery-card md:col-span-7 group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl" data-item="editorial">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container">
+<img alt="Vogue Cover Editorial by Aurelia Vaux featuring graphic avant-garde eye look" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaef8QdAsMadVy2h3gf4_qwss9qjY9nh7CkjnD0JZjU3G7g_bh-XVOcGnZkspuaJi9V8A6PYHUNTiceX1D6DJZHoYGxw6xnr_Q9AZLrPdrpt0_Mh7NXrmWYhWRHGdAPRjLs84K-t5WU7JZktx41Be9oDgX7eBTNXnVZ8hobyaqDRKbUCKAgMDKgd4nmyEB-ZG-aNdw1Apr_ylZtxEZOTfhvQsZlRGOTNrOIXmr0zrsjfqChjrkOR1PVg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+<!-- Category Pill -->
+<span class="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
+              Cover Editorial
+            </span>
+<!-- Metadata Overlay -->
+<div class="absolute bottom-0 left-0 right-0 p-space-lg text-on-primary flex flex-col space-y-space-xs transform translate-y-2 group-hover:translate-y-0 transition-transform">
+<span class="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Milan Fashion Week · Couture Issue</span>
+<h3 class="font-headline-md text-headline-md leading-tight">Vogue Cover — Avant-Garde Graphic Éclat</h3>
+<p class="font-body-sm text-body-sm text-surface-container-high opacity-90 max-w-lg">
+                Sculpted geometric pearl inlay lines, lacquered obsidian wing, and wet-finish nude lips. Photographed backstage at Palazzo Parigi.
+              </p>
+<!-- Ingredients / Recipe breakdown on hover -->
+<div class="pt-space-xs flex flex-wrap items-center gap-space-xs text-[11px] font-label-caps uppercase text-primary-fixed">
+<span class="bg-primary/60 px-2 py-0.5 rounded">Key: Pat McGrath Mothership XI</span>
+<span class="bg-primary/60 px-2 py-0.5 rounded">Dior Backstage Face Glow</span>
+<span class="bg-primary/60 px-2 py-0.5 rounded">Fenty Gloss Bomb Heat</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sub-Column with 2 stacked cards -->
+<div class="md:col-span-5 flex flex-col space-y-space-lg">
+<!-- CARD 2: CHÂTEAU BRIDAL VEIL (Image 7) -->
+<div class="gallery-card group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl" data-item="bridal">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container">
+<img alt="Romantic French Château Bride with lace veil and luminous soft glam by Aurelia Vaux" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlT2CfWENpSg3W6x6zDt5wws-e_m7zPlVXKz5qCYjQOnJliVM9B-kK8oE-0jtGC4ZibaQ54bLiIxZkWCHM9Qv8yZjfHcEREFYuo0McgHOjGemfiNGDLiYRu3T9jzvyS3wkvuPR6au08FzUJ0Asl5tt1dGBc5hdQekt6UqN2vbwa2LXMGqmN7vf7uoSqNpQCuAceqE-CCJkyy7Gvo-llnePmpPtZ1wt8nsCqMHRu_CwL2cVr73hFf41bA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+<span class="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
+                Bridal Suite
+              </span>
+<div class="absolute bottom-0 left-0 right-0 p-space-md lg:p-space-lg text-on-primary space-y-space-xxs">
+<span class="font-label-caps text-[10px] text-secondary-container uppercase tracking-widest">Château de Chantilly, France</span>
+<h3 class="font-headline-sm text-headline-sm leading-snug">Luminous Ethereal Rose Garden Bride</h3>
+<p class="font-body-sm text-body-sm text-surface-container-high opacity-90">
+                  Custom water-resistant sheer radiance, crushed petal blush, and soft cashmere veil setting for bride Lady Vivienne.
+                </p>
+<div class="pt-space-xxs text-secondary-fixed text-body-sm italic font-title-editorial">
+                  “Aurelia made me feel like an immortal painting. It stayed flawless through midnight.”
+                </div>
+</div>
+</div>
+</div>
+<!-- CARD 3: DIAMOND DEW & GLASS SKIN (Image 6) -->
+<div class="gallery-card group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl" data-item="glow">
+<div class="relative aspect-[16/11] overflow-hidden bg-surface-container">
+<img alt="Met Gala Beauty Suite model with diamond necklace and radiant dewy skin" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHRMKXCS5a1XkkmrNoxltIye_RUuWX2P-1sBBgJ7ZPmmxGdMyySabYEIgle2MFrrPGZ83qnYhMr8DzEkfw4tnIpR2RfGWzBaAd6V2aVyyvdyRufw4IgXmyjxdRWvRWak1QlEyGddS_3zeF9qyf0VvLDwCAgOnZlqdJ7wP7jdssOvLDucv4DAJdn7acuw9HKYmFKuDTdoUVBwjISrQRPzgXGBg3pIR-vYMFz-YzVORmqmk5Ahe-Rw-J9w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+<span class="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
+                Red Carpet &amp; Gala
+              </span>
+<div class="absolute bottom-0 left-0 right-0 p-space-md text-on-primary">
+<span class="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Met Gala Beauty Lounge, NYC</span>
+<h4 class="font-title-editorial text-title-editorial font-medium">Champagne Diamond Dew</h4>
+<p class="font-body-sm text-body-sm text-surface-dim">High-magnification camera-ready skin glazed in cold-pressed botanical oils and champagne pearl mica.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 4: CAP D'ANTIBES GOLDEN HOUR SUN-KISSED (Image 5) -->
+<div class="gallery-card md:col-span-12 group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl mt-space-md" data-item="glow">
+<div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+<div class="lg:col-span-7 relative aspect-[16/10] overflow-hidden bg-surface-container">
+<img alt="Cap d'Antibes Summer Golden Hour campaign with sun-drenched bronze glam" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXOEvzxJd1tG1I-FSuhlnb1X3VzZG-ac187wCi24YwoBBxfM1yUp2l19NzP8FacRtWQ6wjrlhi7t1b3kScK5lg7mpAr3aqtyggkUW8KBFMUxF9zuR1X4aECvndjIAqTd1NuGv8yTbcW7-fplD_nXov6iDL4E2gwV4AI6PrXTR3Cb21BuaPRlajC7C8FxQOAIopnwhla3PTeTlVEt4uy0Jjwk2aTME_QZzBEr7AnrTxnAKwPJT-LMTcYA"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-surface-container-lowest lg:block hidden"></div>
+</div>
+<div class="lg:col-span-5 p-space-lg lg:p-space-xl flex flex-col space-y-space-sm bg-surface-container-lowest">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">wb_twilight</span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Riviera Campaign</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Cap d’Antibes — Golden Hour Nectar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Sun-drenched bronze dimension, natural faux-freckle mapping, and terracotta gloss crafted for luxury resort wear campaign overlooking the French Mediterranean.
+              </p>
+<div class="space-y-space-xxs pt-space-xs">
+<span class="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider">Atelier Technique Notes:</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                  Layered liquid bronzer suspension, peptide moisturiser prep, water-resistant brow laminating gel, and golden amber highlighter across collarbones.
+                </p>
+</div>
+<div class="pt-space-sm">
+<a class="inline-flex items-center gap-space-xs font-label-caps text-label-caps uppercase text-secondary hover:text-on-surface transition-colors" href="#consultation-desk">
+<span>Commission Destination Glam</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- EDITORIAL PRESS & VIP TESTIMONIAL CARDS                      -->
+<!-- ============================================================ -->
+<section class="w-full px-margin-mobile lg:px-margin-desktop py-space-2xl bg-surface-container-low">
+<div class="max-w-[1360px] mx-auto flex flex-col space-y-space-xl">
+<div class="text-center max-w-2xl mx-auto space-y-space-xxs">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-[0.2em]">Words of Acclaim</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">The Haute Standard</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Praise from iconic international editors, couture house producers, and modern brides.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Quote 1 -->
+<div class="bg-surface p-space-xl rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<span class="font-headline-lg text-secondary opacity-30 leading-none">“</span>
+<p class="font-title-editorial text-title-editorial italic text-on-surface leading-relaxed">
+            Aurelia Vaux does not merely apply cosmetics; she calibrates light upon the bone structure with surgical, poetic precision.
+          </p>
+<div class="pt-space-xs">
+<p class="font-label-caps text-label-caps uppercase text-on-surface">Camille de Montparnasse</p>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Senior Beauty Director, Vogue Paris</span>
+</div>
+</div>
+<!-- Quote 2 -->
+<div class="bg-surface p-space-xl rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<span class="font-headline-lg text-secondary opacity-30 leading-none">“</span>
+<p class="font-title-editorial text-title-editorial italic text-on-surface leading-relaxed">
+            From our Lake Como ceremony through fireworks at 3 AM, my complexion never wilted. She brought serenity to the bridal suite that calmed everyone.
+          </p>
+<div class="pt-space-xs">
+<p class="font-label-caps text-label-caps uppercase text-on-surface">Lady Sophia Sterling</p>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Villa d'Este Wedding · Destination Bride</span>
+</div>
+</div>
+<!-- Quote 3 -->
+<div class="bg-surface p-space-xl rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<span class="font-headline-lg text-secondary opacity-30 leading-none">“</span>
+<p class="font-title-editorial text-title-editorial italic text-on-surface leading-relaxed">
+            For Paris Couture Week, Aurelia’s vision defined the runway. Her skin mastery looks flawless both under 4K macro lenses and live hall chandeliers.
+          </p>
+<div class="pt-space-xs">
+<p class="font-label-caps text-label-caps uppercase text-on-surface">Matteo Rossi</p>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Creative Director, Maison Haute Couture</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- SEAMLESS INSTAGRAM REEL SHOWCASE                             -->
+<!-- ============================================================ -->
+<section class="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl">
+<div class="max-w-[1360px] mx-auto flex flex-col space-y-space-xl">
+<!-- Instagram Header & Social Handle -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-xs">
+<div class="space-y-space-xxs">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 fill-secondary" viewbox="0 0 24 24">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+</svg>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Live From The Atelier</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">@AURELIAVAUXMAKEUP</h2>
+</div>
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-xs bg-surface-container text-on-surface rounded-lg font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container-high transition-all shadow-sm" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<span>Follow for Backstage Tutorials &amp; Masterclasses</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+<!-- 4-Grid Instagram Preview Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- IG Post 1 -->
+<a class="group relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-md" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<img alt="Instagram Studio Prep with Aurelia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADsvK3SvSf6wE7esOaP6XoZd9MVqjFkVTQ7fPg3xBoB9Atk9g4nLyDPUYeXscmNkaJz49dwmMjwgob4w7bu-xg0vRQ0UG3btcPzlYCrVNbyeV6GCBLcq9qwLT-pkdW9jUKlyrzalgKOPMHoMX_Zm2Sh3bPkP8CmJK6T7ysGObJnch4QG7On0vW1dhiabExpT8R6E_PiTUBNZGIU6SQux0FZFCJqUFsRbHVx7Cb7kEIideMGIZ5I-rOvA"/>
+<div class="absolute inset-0 bg-surface/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-space-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-caps text-[10px] uppercase tracking-widest">Atelier Reel</span>
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface line-clamp-3">
+              “Step 1 to French bridal luminosity: never rush the thermal hydration compression massage...”
+            </p>
+<div class="flex items-center gap-space-md text-secondary font-label-caps text-[11px]">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">favorite</span> 18.4K</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">chat_bubble</span> 412</span>
+</div>
+</div>
+</a>
+<!-- IG Post 2 -->
+<a class="group relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-md" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<img alt="Instagram Bridal Suite Reveal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlT2CfWENpSg3W6x6zDt5wws-e_m7zPlVXKz5qCYjQOnJliVM9B-kK8oE-0jtGC4ZibaQ54bLiIxZkWCHM9Qv8yZjfHcEREFYuo0McgHOjGemfiNGDLiYRu3T9jzvyS3wkvuPR6au08FzUJ0Asl5tt1dGBc5hdQekt6UqN2vbwa2LXMGqmN7vf7uoSqNpQCuAceqE-CCJkyy7Gvo-llnePmpPtZ1wt8nsCqMHRu_CwL2cVr73hFf41bA"/>
+<div class="absolute inset-0 bg-surface/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-space-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-caps text-[10px] uppercase tracking-widest">Bridal Reveal</span>
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface line-clamp-3">
+              “The morning of, 45 minutes before stepping into her bespoke lace veil. Soft champagne tones for Sophie.”
+            </p>
+<div class="flex items-center gap-space-md text-secondary font-label-caps text-[11px]">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">favorite</span> 24.2K</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">chat_bubble</span> 689</span>
+</div>
+</div>
+</a>
+<!-- IG Post 3 -->
+<a class="group relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-md" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<img alt="Instagram Vogue Backstage Clip" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaef8QdAsMadVy2h3gf4_qwss9qjY9nh7CkjnD0JZjU3G7g_bh-XVOcGnZkspuaJi9V8A6PYHUNTiceX1D6DJZHoYGxw6xnr_Q9AZLrPdrpt0_Mh7NXrmWYhWRHGdAPRjLs84K-t5WU7JZktx41Be9oDgX7eBTNXnVZ8hobyaqDRKbUCKAgMDKgd4nmyEB-ZG-aNdw1Apr_ylZtxEZOTfhvQsZlRGOTNrOIXmr0zrsjfqChjrkOR1PVg"/>
+<div class="absolute inset-0 bg-surface/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-space-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-caps text-[10px] uppercase tracking-widest">Backstage Paris</span>
+<span class="material-symbols-outlined text-[18px]">videocam</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface line-clamp-3">
+              “Graphic eyeliner architecture with genuine micro-pearl droplets under studio strobes for Vogue Italia.”
+            </p>
+<div class="flex items-center gap-space-md text-secondary font-label-caps text-[11px]">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">favorite</span> 31.9K</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">chat_bubble</span> 1,104</span>
+</div>
+</div>
+</a>
+<!-- IG Post 4 -->
+<a class="group relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-md" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<img alt="Instagram Golden Hour Côte d'Azur look" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXOEvzxJd1tG1I-FSuhlnb1X3VzZG-ac187wCi24YwoBBxfM1yUp2l19NzP8FacRtWQ6wjrlhi7t1b3kScK5lg7mpAr3aqtyggkUW8KBFMUxF9zuR1X4aECvndjIAqTd1NuGv8yTbcW7-fplD_nXov6iDL4E2gwV4AI6PrXTR3Cb21BuaPRlajC7C8FxQOAIopnwhla3PTeTlVEt4uy0Jjwk2aTME_QZzBEr7AnrTxnAKwPJT-LMTcYA"/>
+<div class="absolute inset-0 bg-surface/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-space-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-caps text-[10px] uppercase tracking-widest">Sun Ritual</span>
+<span class="material-symbols-outlined text-[18px]">wb_sunny</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface line-clamp-3">
+              “Golden hour on the French Riviera: minimal powder, maximum botanical luster. Save this recipe for summer.”
+            </p>
+<div class="flex items-center gap-space-md text-secondary font-label-caps text-[11px]">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">favorite</span> 22.8K</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">chat_bubble</span> 516</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- LUXURY RESERVATION & CONSULTATION DESK                       -->
+<!-- ============================================================ -->
+<section class="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="consultation-desk">
+<div class="max-w-[1360px] mx-auto bg-surface-container-high/60 rounded-2xl p-space-xl lg:p-space-3xl shadow-lg relative overflow-hidden">
+<!-- Decorative Backdrop Floral Accent -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-secondary-container/30 rounded-full blur-[90px] pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start relative z-10">
+<!-- Left: Editorial Narrative & Guarantee -->
+<div class="lg:col-span-5 space-y-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">calendar_month</span>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Private Reservation Desk</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight">
+            Reserve Your Bridal Suite or Commission Aurelia
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Due to extensive international travel commitments for fashion weeks and private VIP clients, bridal dates are strictly reserved on a first-confirmed basis up to 18 months in advance.
+          </p>
+<!-- Distinction list -->
+<div class="space-y-space-xs pt-space-xs font-body-sm text-body-sm text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">done_all</span>
+<span>Full bridal morning exclusivity (no overlapping appointments)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">done_all</span>
+<span>Luxury skincare prep &amp; bespoke touch-up kit included</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">done_all</span>
+<span>European &amp; Global Destination Travel Concierge</span>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-lowest/80 backdrop-blur rounded-xl shadow-sm">
+<span class="font-label-caps text-[10px] uppercase text-secondary tracking-widest">Direct Atelier Contact</span>
+<p class="font-body-md text-on-surface font-medium mt-1">concierge@aureliavaux.com</p>
+<span class="font-body-sm text-[12px] text-on-surface-variant">+33 (0)1 42 68 00 90 · Paris 1er</span>
+</div>
+</div>
+<!-- Right: Architectural Booking Inquiry Form -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-lg lg:p-space-xl rounded-xl shadow-md">
+<form class="space-y-space-md" id="reservationForm" onsubmit="event.preventDefault(); alert('Merci. Your private consultation request has been dispatched to Madame Vaux\'s concierge desk.');">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Full Name *</label>
+<input class="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary" placeholder="Lady Caroline Vance" required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Email Address *</label>
+<input class="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary" placeholder="caroline@vance.com" required="" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Event Date *</label>
+<input class="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary" required="" type="date" value="2025-06-21"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Destination / Venue</label>
+<input class="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary" placeholder="Lake Como, Italy" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Service Type</label>
+<select class="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary">
+<option>Bridal Suite Couture</option>
+<option>Full Bridal Party &amp; Suite</option>
+<option>Editorial / Campaign Direction</option>
+<option>Red Carpet / Met Gala Suite</option>
+<option>Private Masterclass</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Aesthetic Vision &amp; Notes</label>
+<textarea class="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary" placeholder="Tell Aurelia about your bridal gown silhouette, wedding veil details, lighting, or specific glam references..." rows="3"></textarea>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-2">
+<input class="rounded accent-secondary" id="ndaCheck" type="checkbox"/>
+<label class="font-body-sm text-[12px] text-on-surface-variant" for="ndaCheck">Request Private VIP / NDA Protocol</label>
+</div>
+<button class="w-full sm:w-auto inline-flex items-center justify-center px-space-xl py-space-sm bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider rounded-lg shadow-md hover:bg-inverse-surface hover:text-inverse-on-surface transform hover:-translate-y-[1px] transition-all" type="submit">
+                Submit Reservation Request
+              </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Filter tab interactions for gallery
+  const filterTabs = document.querySelectorAll('.gallery-tab');
+  const galleryCards = document.querySelectorAll('.gallery-card');
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => {
+        t.classList.remove('bg-primary', 'text-on-primary', 'active');
+        t.classList.add('text-on-surface-variant');
+      });
+      tab.classList.add('bg-primary', 'text-on-primary', 'active');
+      tab.classList.remove('text-on-surface-variant');
+
+      const cat = tab.getAttribute('data-category');
+      galleryCards.forEach(card => {
+        const itemType = card.getAttribute('data-item');
+        if (cat === 'all' || itemType === cat) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Soundscape Ambient toggle logic
+  const toggleBtn = document.getElementById('toggleAmbienceBtn');
+  const btnText = document.getElementById('ambienceBtnText');
+  const playIcon = document.getElementById('ambiencePlayIcon');
+  const soundBars = document.getElementById('soundBarsContainer');
+  let isPlaying = true;
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        btnText.textContent = 'Background Ambience: ON';
+        playIcon.textContent = 'pause';
+        soundBars.style.opacity = '1';
+      } else {
+        btnText.textContent = 'Background Ambience: PAUSED';
+        playIcon.textContent = 'play_arrow';
+        soundBars.style.opacity = '0.3';
+      }
+    });
+  }
+
+  // Backstage Reel Trigger interaction
+  const reelBtn = document.getElementById('reelTriggerBtn');
+  if (reelBtn) {
+    reelBtn.addEventListener('click', () => {
+      const gallery = document.getElementById('masterpiece-gallery');
+      if (gallery) {
+        gallery.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+</script></main><aside class="fixed bottom-space-lg right-space-lg z-40 bg-surface-container-low/90 backdrop-blur-xl rounded-full px-space-md py-space-xs shadow-[0_16px_36px_rgba(32,26,23,0.08)] flex items-center gap-space-sm"><div class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container animate-spin-slow"><span class="material-symbols-outlined text-[14px]">album</span></div><div class="flex flex-col"><span class="font-label-caps text-[9px] uppercase tracking-wider text-secondary">Bridal Soundscape</span><span class="font-body-sm text-[11px] text-on-surface whitespace-nowrap">Clair de Lune · Lounge Mix</span></div><div class="flex items-end gap-[2px] h-4 px-space-xxs"><span class="w-[2px] bg-secondary rounded-full wave-bar-1"></span><span class="w-[2px] bg-secondary rounded-full wave-bar-2"></span><span class="w-[2px] bg-secondary rounded-full wave-bar-3"></span><span class="w-[2px] bg-secondary rounded-full wave-bar-4"></span></div><button aria-label="Soundtrack playback control" class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-inverse-surface hover:text-inverse-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[15px]">pause</span></button><div class="hidden md:flex items-center text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">volume_up</span></div></aside><footer class="w-full bg-surface-container-low mt-space-3xl"><div class="w-full bg-surface-container py-space-md overflow-hidden"><div class="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin-desktop flex flex-wrap items-center justify-between gap-space-md"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">stars</span><span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">Featured In Haute Editorial Publications</span></div><div class="flex flex-wrap items-center gap-space-xl font-headline-sm text-headline-sm text-on-surface opacity-75"><span class="italic">VOGUE</span><span class="font-serif tracking-tighter">HARPER'S BAZAAR</span><span class="font-serif tracking-widest text-title-editorial">ELLE</span><span class="font-serif italic text-title-editorial">BRIDES</span><span class="font-serif tracking-widest text-title-editorial">L'OFFICIEL</span></div></div></div><div class="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin-desktop py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl"><div class="md:col-span-4 flex flex-col gap-space-sm"><span class="font-headline-md text-headline-md text-on-surface">Aurelia Vaux</span><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Haute couture bespoke bridal beauty, runway direction, and editorial private glam suites across Europe and North America.</p><div class="flex items-center gap-space-xs pt-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">verified</span><span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Master Atelier Artistry</span></div></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Private Ateliers</span><div class="space-y-space-xxs font-body-md text-body-md text-on-surface-variant"><p><span class="font-medium text-on-surface">Paris:</span> 18 Place Vendôme, 75001</p><p><span class="font-medium text-on-surface">London:</span> 44 Mayfair Square, W1K</p><p><span class="font-medium text-on-surface">New York:</span> 780 Madison Avenue, 10065</p></div></div><div class="md:col-span-2 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Navigation</span><div class="flex flex-col space-y-space-xxs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="portfolio" href="#">Portfolio Archive</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="bridal-suite" href="#">Bridal Suites</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="editorial" href="#">Editorial &amp; Runway</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="services-and-rates" href="#">Tariffs &amp; Services</a></div></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Consultation Desk</span><p class="font-body-sm text-body-sm text-on-surface-variant">Private bridal suite inquiries and worldwide destination commissions.</p><div class="flex flex-col gap-space-xs pt-space-xxs"><a class="font-body-md text-body-md text-on-surface hover:text-secondary transition-colors underline decoration-secondary-container" href="mailto:concierge@aureliavaux.com">concierge@aureliavaux.com</a><span class="font-label-caps text-label-caps text-on-surface-variant">+33 (0)1 42 68 00 90</span></div></div></div><div class="pt-space-2xl mt-space-2xl flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><span class="font-body-sm text-body-sm">© 2025 Aurelia Vaux Haute Beauté &amp; Bridal. All rights reserved.</span><div class="flex items-center gap-space-lg"><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors" data-path="client-inquiries" href="#">Client Terms</a><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors" data-path="client-inquiries" href="#">Privacy Charter</a><a class="font-label-caps text-label-caps uppercase text-secondary hover:text-on-surface transition-colors" data-path="reserve-appointment" href="#">Private Reservations</a></div></div></div></footer></body></html>
