@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { nav, services, site, testimonials } from "@/lib/content";
 import { images } from "@/lib/images";
+import { PortfolioGallery } from "@/components/PortfolioGallery";
 
 const HEALING_TRACK_ID = "f1khMl3MpOY";
 
@@ -48,8 +49,6 @@ function formatTime(seconds: number) {
   }
   return `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
 }
-
-type GalleryFilter = "all" | "editorial" | "bridal" | "glow";
 
 function SoundBars({ compact = false }: { compact?: boolean }) {
   return (
@@ -117,7 +116,6 @@ function InstagramCard({
 }
 
 export function AureliaSite() {
-  const [filter, setFilter] = useState<GalleryFilter>("all");
   const [menuOpen, setMenuOpen] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [elapsed, setElapsed] = useState(0);
@@ -248,9 +246,6 @@ export function AureliaSite() {
   function closeMenu() {
     setMenuOpen(false);
   }
-
-  const visible = (item: Exclude<GalleryFilter, "all">) => filter === "all" || filter === item;
-  const stackedVisible = visible("bridal") || visible("glow");
 
   function onReserve(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -504,161 +499,7 @@ export function AureliaSite() {
             </div>
           </section>
 
-          <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="portfolio">
-            <div className="max-w-[1360px] mx-auto flex flex-col space-y-space-xl">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-                <div className="space-y-space-xxs max-w-xl">
-                  <div className="flex items-center gap-space-xs">
-                    <span className="w-6 h-[1px] bg-secondary" />
-                    <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Recent Looks</span>
-                  </div>
-                  <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface">Portfolio</h2>
-                  <p className="font-body-md text-body-md text-on-surface-variant">
-                    Soft bridal glow, traditional ceremony glam, and evening looks finished across Kumasi.
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-1.5 rounded-lg shadow-sm">
-                  {(
-                    [
-                      ["all", "All Looks"],
-                      ["editorial", "Soft Glam"],
-                      ["bridal", "Bridal"],
-                      ["glow", "Evening Glow"],
-                    ] as const
-                  ).map(([id, label]) => (
-                    <button
-                      key={id}
-                      className={`gallery-tab px-space-md py-space-xs rounded font-label-caps text-label-caps uppercase tracking-wider transition-colors ${
-                        filter === id
-                          ? "bg-primary text-on-primary"
-                          : "text-on-surface-variant hover:text-on-surface"
-                      }`}
-                      type="button"
-                      onClick={() => setFilter(id)}
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-space-lg items-start">
-                <div
-                  className={`gallery-card md:col-span-7 group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl ${visible("editorial") ? "" : "hidden"}`}
-                  id="editorial"
-                >
-                  <div className="relative aspect-[3/4] overflow-hidden bg-surface-container">
-                    <img
-                      alt="High fashion editorial featuring graphic gold eye makeup"
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                      src={images.editorial}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
-                    <span className="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
-                      Soft Glam
-                    </span>
-                    <div className="absolute bottom-0 left-0 right-0 p-space-lg text-on-primary flex flex-col space-y-space-xs transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                      <span className="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Kumasi studio</span>
-                      <h3 className="font-headline-md text-headline-md leading-tight">Gold Hour Soft Glam</h3>
-                      <p className="font-body-sm text-body-sm text-surface-container-high opacity-90 max-w-lg">
-                        Sculpted waves, warm gold lids, and a clean glossy lip — made for portraits, dinners, and evening photo calls across Kumasi.
-                      </p>
-                      <div className="pt-space-xs flex flex-wrap items-center gap-space-xs text-[11px] font-label-caps uppercase text-primary-fixed">
-                        <span className="bg-primary/60 px-2 py-0.5 rounded">Heat-set skin</span>
-                        <span className="bg-primary/60 px-2 py-0.5 rounded">Defined eyes</span>
-                        <span className="bg-primary/60 px-2 py-0.5 rounded">Soft highlight</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={`md:col-span-5 flex flex-col space-y-space-lg ${stackedVisible ? "" : "hidden"}`}>
-                  <div className={`gallery-card group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl ${visible("bridal") ? "" : "hidden"}`} id="bridal-suite">
-                    <div className="relative aspect-[4/5] overflow-hidden bg-surface-container">
-                      <img
-                        alt="Romantic bridal makeup with sculpted updo and luminous skin"
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                        src={images.bridal}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
-                      <span className="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
-                        Bridal
-                      </span>
-                      <div className="absolute bottom-0 left-0 right-0 p-space-md lg:p-space-lg text-on-primary space-y-space-xxs">
-                        <span className="font-label-caps text-[10px] text-secondary-container uppercase tracking-widest">Bridal morning · near KNUST</span>
-                        <h3 className="font-headline-sm text-headline-sm leading-snug">Soft Kumasi Bride</h3>
-                        <p className="font-body-sm text-body-sm text-surface-container-high opacity-90">
-                          A luminous bridal face with petal blush and a lasting finish — from getting-ready photos to the last dance.
-                        </p>
-                        <div className="pt-space-xxs text-secondary-fixed text-body-sm italic font-title-editorial">
-                          “She came to the house and stayed until the last photo. Nothing moved.”
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className={`gallery-card group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl ${visible("glow") ? "" : "hidden"}`}>
-                    <div className="relative aspect-[16/11] overflow-hidden bg-surface-container">
-                      <img
-                        alt="Dewy glass skin and sculpted bridal hair"
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                        src={images.glass}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
-                      <span className="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
-                        Evening
-                      </span>
-                      <div className="absolute bottom-0 left-0 right-0 p-space-md text-on-primary">
-                        <span className="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Reception · Kumasi</span>
-                        <h4 className="font-title-editorial text-title-editorial font-medium">Clean Glow for Night Photos</h4>
-                        <p className="font-body-sm text-body-sm text-surface-dim">
-                          Dewy skin that still photographs clean under reception lights — finished at the studio, touched up at the venue.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={`gallery-card md:col-span-12 group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl mt-space-md ${visible("glow") ? "" : "hidden"}`}>
-                  <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-                    <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden bg-surface-container">
-                      <img
-                        alt="Pearl and gold evening glam with luminous skin"
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                        src={images.glow}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-surface-container-lowest lg:block hidden" />
-                    </div>
-                    <div className="lg:col-span-5 p-space-lg lg:p-space-xl flex flex-col space-y-space-sm bg-surface-container-lowest">
-                      <div className="flex items-center gap-space-xs">
-                        <span className="material-symbols-outlined text-secondary text-[18px]">wb_twilight</span>
-                        <span className="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Outdoor ceremony</span>
-                      </div>
-                      <h3 className="font-headline-md text-headline-md text-on-surface">Late Afternoon Gold</h3>
-                      <p className="font-body-md text-body-md text-on-surface-variant">
-                        Warm bronze and pearl for outdoor Kumasi ceremonies — soft enough for daylight, defined enough for the evening programme.
-                      </p>
-                      <div className="space-y-space-xxs pt-space-xs">
-                        <span className="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider">What stays on:</span>
-                        <p className="font-body-sm text-body-sm text-on-surface">
-                          Skin prepped for humidity, brows set, and a light gold wash that still reads on camera after the drive to the venue.
-                        </p>
-                      </div>
-                      <div className="pt-space-sm">
-                        <a
-                          className="inline-flex items-center gap-space-xs font-label-caps text-label-caps uppercase text-secondary hover:text-on-surface transition-colors"
-                          href="#book"
-                        >
-                          <span>Book this look</span>
-                          <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <PortfolioGallery />
 
           <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="services">
             <div className="max-w-[1360px] mx-auto flex flex-col space-y-space-xl">
