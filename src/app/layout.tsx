@@ -4,9 +4,9 @@ import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bonafidemakeover.com";
 
-const title = "Bonafide Makeover | Kumasi Bridal Artistry";
+const title = "Bonafide Makeover | Bridal Makeup in Kumasi";
 const description =
-  "Bridal, traditional, and occasion makeup from a studio in Apemso, Kumasi — near KNUST.";
+  "Book bridal, traditional, and occasion makeup with Bonafide Makeover in Kumasi — near KNUST. Studio sittings and home bridal calls.";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],

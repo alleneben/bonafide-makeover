@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { nav, services, site, testimonials } from "@/lib/content";
 import { images } from "@/lib/images";
 
 const HEALING_TRACK_ID = "f1khMl3MpOY";
@@ -50,15 +51,6 @@ function formatTime(seconds: number) {
 
 type GalleryFilter = "all" | "editorial" | "bridal" | "glow";
 
-const NAV = [
-  { href: "#masterpiece-gallery", label: "Portfolio", current: true },
-  { href: "#bridal-suite", label: "Bridal Suite" },
-  // { href: "#editorial", label: "Editorial" },
-  { href: "#about", label: "About" },
-  // { href: "#consultation-desk", label: "Services & Rates" },
-  { href: "#consultation-desk", label: "Inquiries" },
-] as const;
-
 function SoundBars({ compact = false }: { compact?: boolean }) {
   return (
     <div className={`flex items-end ${compact ? "gap-[2px] h-4 px-space-xxs" : "gap-1 h-6 px-space-sm bg-surface-container rounded-lg"}`}>
@@ -97,7 +89,7 @@ function InstagramCard({
   return (
     <a
       className="group relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-md"
-      href="https://instagram.com/bonafide_makeover"
+      href={site.instagramUrl}
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -278,12 +270,12 @@ export function AureliaSite() {
                 Bonafide Makeover
               </span>
               <span className="mt-space-xxs hidden truncate font-label-caps text-[10px] uppercase tracking-widest text-secondary sm:block sm:text-label-caps">
-                Kumasi Studio · Near KNUST
+                {site.tagline}
               </span>
             </span>
           </a>
           <nav className="hidden items-center gap-space-lg xl:flex">
-            {NAV.map((link) => (
+            {nav.map((link) => (
               <a
                 key={link.label}
                 aria-current={"current" in link && link.current ? "page" : undefined}
@@ -301,18 +293,18 @@ export function AureliaSite() {
           <div className="flex shrink-0 items-center gap-2 sm:gap-space-md">
             <a
               className="hidden items-center gap-space-xxs font-label-sm text-label-sm text-on-surface-variant transition-colors hover:text-secondary xl:flex"
-              href="https://instagram.com/bonafide_makeover"
+              href={site.instagramUrl}
               rel="noopener noreferrer"
               target="_blank"
             >
               <span className="material-symbols-outlined text-[16px]">photo_camera</span>
-              <span>@bonafide_makeover</span>
+              <span>{site.instagram}</span>
             </a>
             <a
               className="hidden items-center justify-center rounded-lg bg-primary px-space-md py-space-xs font-label-caps text-label-caps uppercase tracking-wider text-on-primary shadow-[0_4px_14px_rgba(0,0,0,0.06)] transition-all hover:-translate-y-[1px] hover:bg-inverse-surface hover:text-inverse-on-surface xl:inline-flex"
-              href="#consultation-desk"
+              href="#book"
             >
-              Reserve Appointment
+              Book Now
             </a>
             <img
               alt="Bonafide Makeover"
@@ -333,7 +325,7 @@ export function AureliaSite() {
         {menuOpen && (
           <nav className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-outline-variant/40 bg-surface px-4 py-4 xl:hidden">
             <div className="flex flex-col">
-              {NAV.map((link) => (
+              {nav.map((link) => (
                 <a
                   key={link.label}
                   className="border-b border-outline-variant/30 py-4 font-label-caps text-label-caps uppercase tracking-widest text-on-surface"
@@ -346,25 +338,25 @@ export function AureliaSite() {
             </div>
             <a
               className="mt-4 flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant"
-              href="https://instagram.com/bonafide_makeover"
+              href={site.instagramUrl}
               rel="noopener noreferrer"
               target="_blank"
             >
               <span className="material-symbols-outlined text-[18px]">photo_camera</span>
-              <span>@bonafide_makeover</span>
+              <span>{site.instagram}</span>
             </a>
             <a
               className="mt-3 inline-flex font-body-sm text-on-surface-variant"
-              href="tel:+233554435360"
+              href={site.phoneHref}
             >
-              +233 554435360
+              {site.phone}
             </a>
             <a
               className="mt-5 flex w-full items-center justify-center rounded-lg bg-primary px-space-md py-4 font-label-caps text-label-caps uppercase tracking-wider text-on-primary"
-              href="#consultation-desk"
+              href="#book"
               onClick={closeMenu}
             >
-              Reserve Appointment
+              Book Now
             </a>
           </nav>
         )}
@@ -380,7 +372,7 @@ export function AureliaSite() {
                 <div className="inline-flex max-w-full items-center gap-space-xs self-start rounded-full bg-surface-container-high/70 px-space-sm py-space-xxs shadow-sm">
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" />
                   <span className="font-label-caps text-[10px] uppercase leading-snug tracking-widest text-on-surface-variant sm:text-label-caps">
-                    Mostly in Kumasi · Apemso, near KNUST
+                    Kumasi · Near KNUST
                   </span>
                 </div>
                 <div className="space-y-space-xs">
@@ -388,48 +380,47 @@ export function AureliaSite() {
                     Bonafide Makeover
                   </p>
                   <h1 className="font-display-xl text-display-xl-mobile lg:text-display-xl tracking-tight text-on-surface leading-[1.04]">
-                    The Art of <br className="hidden sm:inline" />
-                    <span className="italic font-normal text-secondary">Radiant</span> Perfection.
+                    Soft glam that <br className="hidden sm:inline" />
+                    lasts from <span className="italic font-normal text-secondary">vow</span> to reception.
                   </h1>
                 </div>
                 <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                  Bridal, traditional, and occasion makeup from her chair in Apemso, Kumasi — near KNUST. Most days she is in Kumasi: home calls, studio sittings, and ceremony mornings across the city.
+                  Bridal, traditional, and occasion makeup for Kumasi women who want polished skin, defined eyes, and a finish that holds through heat, tears, and every photo.
                 </p>
                 <div className="pt-space-xs flex flex-wrap items-center gap-space-md">
                   <a
                     className="inline-flex items-center justify-center px-space-xl py-space-sm bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider rounded-lg shadow-md hover:bg-inverse-surface hover:text-inverse-on-surface transform hover:-translate-y-[2px] transition-all"
-                    href="#masterpiece-gallery"
+                    href="#book"
                   >
-                    Explore Selected Works
+                    Book Your Date
                   </a>
-                  <button
+                  <a
                     className="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-surface-container text-on-surface font-label-caps text-label-caps uppercase tracking-wider rounded-lg hover:bg-surface-container-high transition-all"
-                    type="button"
-                    onClick={() => document.getElementById("masterpiece-gallery")?.scrollIntoView({ behavior: "smooth" })}
+                    href="#portfolio"
                   >
                     <span className="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-sm">
-                      <span className="material-symbols-outlined text-[16px] ml-0.5">play_arrow</span>
+                      <span className="material-symbols-outlined text-[16px]">photo_library</span>
                     </span>
-                    <span>Watch Backstage Reel</span>
-                  </button>
+                    <span>View Portfolio</span>
+                  </a>
                 </div>
                 <div className="pt-space-lg grid grid-cols-3 gap-space-md max-w-lg">
                   <div className="flex flex-col">
-                    <span className="font-headline-sm text-headline-sm text-on-surface">Kumasi</span>
+                    <span className="font-headline-sm text-headline-sm text-on-surface">Bridal</span>
                     <span className="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider mt-1">
-                      Home studio in Apemso, near KNUST
+                      White wedding mornings
                     </span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="font-headline-sm text-headline-sm text-on-surface">Apemso</span>
+                    <span className="font-headline-sm text-headline-sm text-on-surface">Kente</span>
                     <span className="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider mt-1">
-                      Studio sittings most days
+                      Traditional ceremony glam
                     </span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="font-headline-sm text-headline-sm text-on-surface">Glam</span>
+                    <span className="font-headline-sm text-headline-sm text-on-surface">Home</span>
                     <span className="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider mt-1">
-                      Bridal, traditional &amp; portrait
+                      Studio or home bridal calls
                     </span>
                   </div>
                 </div>
@@ -444,9 +435,9 @@ export function AureliaSite() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent opacity-80 pointer-events-none" />
                   <div className="absolute bottom-space-md left-space-md right-space-md text-on-primary">
-                    <span className="font-label-caps text-[10px] uppercase tracking-widest text-secondary-fixed">Kumasi Studio Artist</span>
+                    <span className="font-label-caps text-[10px] uppercase tracking-widest text-secondary-fixed">Makeup Artist · Kumasi</span>
                     <p className="font-title-editorial text-title-editorial italic leading-tight">Bonafide Makeover</p>
-                    <span className="font-body-sm text-body-sm text-surface-dim">Mostly at the Apemso chair, near KNUST</span>
+                    <span className="font-body-sm text-body-sm text-surface-dim">Kumasi studio · near KNUST</span>
                   </div>
                 </div>
                 <div className="hidden sm:flex absolute -bottom-8 -left-10 bg-surface-container-lowest/95 backdrop-blur-md p-space-sm rounded-xl shadow-xl max-w-xs items-center gap-space-sm -rotate-1 hover:rotate-0 transition-transform">
@@ -458,14 +449,14 @@ export function AureliaSite() {
                       <span className="material-symbols-outlined text-[15px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                         star
                       </span>
-                      <span className="font-label-caps text-[10px] uppercase tracking-widest">Iconic Radiance</span>
+                      <span className="font-label-caps text-[10px] uppercase tracking-widest">Signature Look</span>
                     </div>
-                    <p className="font-title-editorial text-body-sm font-medium text-on-surface leading-snug">Kumasi Evening Dew</p>
-                    <span className="font-body-sm text-[11px] text-on-surface-variant">Soft glow for Kumasi evenings</span>
+                    <p className="font-title-editorial text-body-sm font-medium text-on-surface leading-snug">Soft Bridal Glow</p>
+                    <span className="font-body-sm text-[11px] text-on-surface-variant">Heat-set for Kumasi days</span>
                   </div>
                 </div>
                 <div className="absolute -top-4 right-2 flex h-16 w-16 flex-col items-center justify-center rounded-full bg-secondary-container/90 text-on-secondary-container shadow-md rotate-12 backdrop-blur-md sm:-right-4 sm:-top-6 sm:h-20 sm:w-20">
-                  <span className="font-label-caps text-[8px] uppercase tracking-widest leading-none">Couture</span>
+                  <span className="font-label-caps text-[8px] uppercase tracking-widest leading-none">Bridal</span>
                   <span className="font-title-editorial text-base italic leading-tight">BM</span>
                   <span className="font-label-caps text-[7px] uppercase tracking-tighter text-on-secondary-fixed-variant">Kumasi</span>
                 </div>
@@ -482,14 +473,14 @@ export function AureliaSite() {
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
-                    <span className="font-label-caps text-[10px] uppercase text-secondary tracking-widest">Acoustic Atmosphere</span>
+                    <span className="font-label-caps text-[10px] uppercase text-secondary tracking-widest">Studio Playlist</span>
                     <span className="inline-block px-1.5 py-0.5 rounded text-[9px] font-label-caps uppercase bg-secondary-container text-on-secondary-container">
-                      Master Ambient
+                      Soft Instrumental
                     </span>
                   </div>
                   <span className="font-title-editorial text-title-editorial text-on-surface">Healing In His Presence</span>
                   <span className="font-body-sm text-[12px] text-on-surface-variant">
-                    Christian piano instrumental · Prayer &amp; healing
+                    Christian piano for a calm bridal chair
                   </span>
                 </div>
               </div>
@@ -506,33 +497,33 @@ export function AureliaSite() {
                   onClick={togglePlayback}
                 >
                   <span className="material-symbols-outlined text-[16px]">{playing ? "pause" : "play_arrow"}</span>
-                  <span className="hidden sm:inline">{playing ? "Background Ambience: ON" : "Background Ambience: PAUSED"}</span>
+                  <span className="hidden sm:inline">{playing ? "Playing" : "Paused"}</span>
                   <span className="sm:hidden">{playing ? "On" : "Play"}</span>
                 </button>
               </div>
             </div>
           </section>
 
-          <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="masterpiece-gallery">
+          <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="portfolio">
             <div className="max-w-[1360px] mx-auto flex flex-col space-y-space-xl">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
                 <div className="space-y-space-xxs max-w-xl">
                   <div className="flex items-center gap-space-xs">
                     <span className="w-6 h-[1px] bg-secondary" />
-                    <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Portfolio Archive</span>
+                    <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Recent Looks</span>
                   </div>
-                  <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface">Curated Masterpieces</h2>
+                  <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface">Portfolio</h2>
                   <p className="font-body-md text-body-md text-on-surface-variant">
-                    White weddings, traditional ceremonies, and portraits — almost all of them done in Kumasi, from the Apemso studio and nearby homes.
+                    Soft bridal glow, traditional ceremony glam, and evening looks finished across Kumasi.
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-1.5 rounded-lg shadow-sm">
                   {(
                     [
-                      ["all", "All Works"],
-                      ["editorial", "High Fashion"],
-                      ["bridal", "Bridal Couture"],
-                      ["glow", "Bronze & Glass Skin"],
+                      ["all", "All Looks"],
+                      ["editorial", "Soft Glam"],
+                      ["bridal", "Bridal"],
+                      ["glow", "Evening Glow"],
                     ] as const
                   ).map(([id, label]) => (
                     <button
@@ -564,18 +555,18 @@ export function AureliaSite() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
                     <span className="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
-                      Kumasi Editorial
+                      Soft Glam
                     </span>
                     <div className="absolute bottom-0 left-0 right-0 p-space-lg text-on-primary flex flex-col space-y-space-xs transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                      <span className="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Apemso studio · Kumasi</span>
-                      <h3 className="font-headline-md text-headline-md leading-tight">Gold Hour — Kumasi Studio Glam</h3>
+                      <span className="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Kumasi studio</span>
+                      <h3 className="font-headline-md text-headline-md leading-tight">Gold Hour Soft Glam</h3>
                       <p className="font-body-sm text-body-sm text-surface-container-high opacity-90 max-w-lg">
-                        Sculpted waves, a molten gold lid, and a finish set for Kumasi light — portrait sittings, dinner, and evening photo calls in the city.
+                        Sculpted waves, warm gold lids, and a clean glossy lip — made for portraits, dinners, and evening photo calls across Kumasi.
                       </p>
                       <div className="pt-space-xs flex flex-wrap items-center gap-space-xs text-[11px] font-label-caps uppercase text-primary-fixed">
-                        <span className="bg-primary/60 px-2 py-0.5 rounded">Apemso chair</span>
-                        <span className="bg-primary/60 px-2 py-0.5 rounded">Kumasi light</span>
-                        <span className="bg-primary/60 px-2 py-0.5 rounded">Heat-proof setting</span>
+                        <span className="bg-primary/60 px-2 py-0.5 rounded">Heat-set skin</span>
+                        <span className="bg-primary/60 px-2 py-0.5 rounded">Defined eyes</span>
+                        <span className="bg-primary/60 px-2 py-0.5 rounded">Soft highlight</span>
                       </div>
                     </div>
                   </div>
@@ -591,16 +582,16 @@ export function AureliaSite() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
                       <span className="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
-                        Bridal Suite
+                        Bridal
                       </span>
                       <div className="absolute bottom-0 left-0 right-0 p-space-md lg:p-space-lg text-on-primary space-y-space-xxs">
-                        <span className="font-label-caps text-[10px] text-secondary-container uppercase tracking-widest">KNUST area · Kumasi bridal morning</span>
+                        <span className="font-label-caps text-[10px] text-secondary-container uppercase tracking-widest">Bridal morning · near KNUST</span>
                         <h3 className="font-headline-sm text-headline-sm leading-snug">Soft Kumasi Bride</h3>
                         <p className="font-body-sm text-body-sm text-surface-container-high opacity-90">
-                          A quiet, luminous bridal face for a Kumasi ceremony — sculpted updo, petal blush, and a finish that holds from the house to the reception.
+                          A luminous bridal face with petal blush and a lasting finish — from getting-ready photos to the last dance.
                         </p>
                         <div className="pt-space-xxs text-secondary-fixed text-body-sm italic font-title-editorial">
-                          “She came to the house in Apemso and stayed until the last photo. Nothing moved.”
+                          “She came to the house and stayed until the last photo. Nothing moved.”
                         </div>
                       </div>
                     </div>
@@ -615,13 +606,13 @@ export function AureliaSite() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
                       <span className="absolute top-space-md left-space-md px-space-sm py-space-xxs bg-surface/90 backdrop-blur-md rounded-full font-label-caps text-[10px] uppercase text-on-surface tracking-widest shadow-sm">
-                        Kumasi Reception
+                        Evening
                       </span>
                       <div className="absolute bottom-0 left-0 right-0 p-space-md text-on-primary">
-                        <span className="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Garden reception · Kumasi</span>
-                        <h4 className="font-title-editorial text-title-editorial font-medium">Glass Skin for the Evening</h4>
+                        <span className="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Reception · Kumasi</span>
+                        <h4 className="font-title-editorial text-title-editorial font-medium">Clean Glow for Night Photos</h4>
                         <p className="font-body-sm text-body-sm text-surface-dim">
-                          Dew that still photographs clean under Kumasi reception lights — done in Apemso, touched up at the venue.
+                          Dewy skin that still photographs clean under reception lights — finished at the studio, touched up at the venue.
                         </p>
                       </div>
                     </div>
@@ -641,24 +632,24 @@ export function AureliaSite() {
                     <div className="lg:col-span-5 p-space-lg lg:p-space-xl flex flex-col space-y-space-sm bg-surface-container-lowest">
                       <div className="flex items-center gap-space-xs">
                         <span className="material-symbols-outlined text-secondary text-[18px]">wb_twilight</span>
-                        <span className="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Kumasi garden day</span>
+                        <span className="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Outdoor ceremony</span>
                       </div>
-                      <h3 className="font-headline-md text-headline-md text-on-surface">Garden Party — Late Afternoon Gold</h3>
+                      <h3 className="font-headline-md text-headline-md text-on-surface">Late Afternoon Gold</h3>
                       <p className="font-body-md text-body-md text-on-surface-variant">
-                        A warm bronze and pearl look for outdoor ceremonies around Kumasi — soft enough for daylight, defined enough for the evening programme.
+                        Warm bronze and pearl for outdoor Kumasi ceremonies — soft enough for daylight, defined enough for the evening programme.
                       </p>
                       <div className="space-y-space-xxs pt-space-xs">
-                        <span className="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider">Studio notes:</span>
+                        <span className="font-label-caps text-[10px] uppercase text-on-surface-variant tracking-wider">What stays on:</span>
                         <p className="font-body-sm text-body-sm text-on-surface">
-                          Skin prepped against Kumasi humidity, brows set, and a light gold wash that still reads on camera after the short drive from Apemso.
+                          Skin prepped for humidity, brows set, and a light gold wash that still reads on camera after the drive to the venue.
                         </p>
                       </div>
                       <div className="pt-space-sm">
                         <a
                           className="inline-flex items-center gap-space-xs font-label-caps text-label-caps uppercase text-secondary hover:text-on-surface transition-colors"
-                          href="#consultation-desk"
+                          href="#book"
                         >
-                          <span>Book the Kumasi studio</span>
+                          <span>Book this look</span>
                           <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                         </a>
                       </div>
@@ -669,36 +660,53 @@ export function AureliaSite() {
             </div>
           </section>
 
+          <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="services">
+            <div className="max-w-[1360px] mx-auto flex flex-col space-y-space-xl">
+              <div className="max-w-2xl space-y-space-xxs">
+                <div className="flex items-center gap-space-xs">
+                  <span className="w-6 h-[1px] bg-secondary" />
+                  <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">What you can book</span>
+                </div>
+                <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface">Services</h2>
+                <p className="font-body-md text-body-md text-on-surface-variant">
+                  Clear offerings for wedding mornings, traditional ceremonies, and portrait days — at the Kumasi studio or in your home.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-space-lg sm:grid-cols-2">
+                {services.map((service) => (
+                  <div
+                    key={service.title}
+                    className="flex flex-col gap-space-sm border border-outline-variant/50 bg-surface-container-lowest p-space-lg rounded-xl"
+                  >
+                    <h3 className="font-headline-sm text-headline-sm text-on-surface">{service.title}</h3>
+                    <p className="font-body-md text-body-md text-on-surface-variant">{service.description}</p>
+                    <span className="font-label-caps text-[10px] uppercase tracking-widest text-secondary pt-space-xs">
+                      {service.detail}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <a
+                className="self-start inline-flex items-center gap-space-xs font-label-caps text-label-caps uppercase tracking-wider text-secondary hover:text-on-surface transition-colors"
+                href="#book"
+              >
+                <span>Check your date</span>
+                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </a>
+            </div>
+          </section>
+
           <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-2xl bg-surface-container-low">
             <div className="max-w-[1360px] mx-auto flex flex-col space-y-space-xl">
               <div className="text-center max-w-2xl mx-auto space-y-space-xxs">
-                <span className="font-label-caps text-label-caps uppercase text-secondary tracking-[0.2em]">Words of Acclaim</span>
-                <h2 className="font-headline-md text-headline-md text-on-surface">The Kumasi chair</h2>
+                <span className="font-label-caps text-label-caps uppercase text-secondary tracking-[0.2em]">Client notes</span>
+                <h2 className="font-headline-md text-headline-md text-on-surface">Loved by Kumasi brides</h2>
                 <p className="font-body-md text-body-md text-on-surface-variant">
-                  Notes from brides and portrait clients who sat with her in Kumasi — mostly in Apemso, near KNUST.
+                  Real mornings in Kumasi — soft glam that still looks fresh when the photos come back.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
-                {[
-                  {
-                    quote:
-                      "She is usually in Kumasi, and that is where we found her. Calm hands, no rush, and she listened to the kente colours first.",
-                    name: "Akosua M.",
-                    role: "Traditional & white wedding · Kumasi",
-                  },
-                  {
-                    quote:
-                      "Our bridal party met her in Apemso before dawn. By the time the KNUST guests arrived, every sister looked like herself — only clearer.",
-                    name: "Efua A.",
-                    role: "Bridal party · Apemso, Kumasi",
-                  },
-                  {
-                    quote:
-                      "I booked the Apemso studio for an engagement sitting. She stayed in Kumasi with us until the last frame, then sent me home with a small touch-up kit.",
-                    name: "Nana Yaa B.",
-                    role: "Engagement portraits · Kumasi",
-                  },
-                ].map((item) => (
+                {testimonials.map((item) => (
                   <div key={item.name} className="bg-surface p-space-xl rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
                     <span className="font-headline-lg text-secondary opacity-30 leading-none">“</span>
                     <p className="font-title-editorial text-title-editorial italic text-on-surface leading-relaxed">{item.quote}</p>
@@ -720,81 +728,129 @@ export function AureliaSite() {
                     <svg className="w-4 h-4 fill-secondary" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
-                    <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">From the Kumasi chair</span>
+                    <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">On Instagram</span>
                   </div>
-                  <h2 className="font-headline-md text-headline-md text-on-surface">@bonafide_makeover</h2>
+                  <h2 className="font-headline-md text-headline-md text-on-surface">{site.instagram}</h2>
                 </div>
                 <a
                   className="inline-flex items-center gap-space-xs px-space-lg py-space-xs bg-surface-container text-on-surface rounded-lg font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container-high transition-all shadow-sm"
-                  href="https://instagram.com/bonafide_makeover"
+                  href={site.instagramUrl}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <span>Follow looks from the Kumasi studio</span>
+                  <span>Follow for bridal looks</span>
                   <span className="material-symbols-outlined text-[16px]">open_in_new</span>
                 </a>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
                 <InstagramCard
                   alt="Kumasi studio prep"
-                  caption="“Morning prep in Apemso: skin first, then the Kumasi light. Most days this is where she works.”"
-                  comments="412"
+                  caption="Morning prep in the Kumasi studio: hydrated skin first, then soft contour for the light."
+                  comments="48"
                   icon="photo_camera"
-                  label="Kumasi Reel"
-                  likes="18.4K"
+                  label="Studio Prep"
+                  likes="1.2K"
                   src={images.portrait}
                 />
                 <InstagramCard
-                  alt="Bridal suite reveal"
-                  caption="“Bridal morning near KNUST. Soft champagne tones, hair set, ready before the family arrives.”"
-                  comments="689"
+                  alt="Bridal morning reveal"
+                  caption="Bridal morning near KNUST. Soft champagne tones, hair set, ready before family arrives."
+                  comments="96"
                   icon="favorite"
-                  label="Bridal Reveal"
-                  likes="24.2K"
+                  label="Bridal Morning"
+                  likes="2.4K"
                   src={images.bridal}
                 />
                 <InstagramCard
                   alt="Kumasi evening glam"
-                  caption="“Gold lid and a clean wing for a Kumasi portrait sitting. Done at the Apemso chair.”"
-                  comments="1,104"
+                  caption="Gold lid and a clean wing for a portrait sitting — finished at the Kumasi studio."
+                  comments="71"
                   icon="videocam"
-                  label="Kumasi Glam"
-                  likes="31.9K"
+                  label="Soft Glam"
+                  likes="1.8K"
                   src={images.editorial}
                 />
                 <InstagramCard
                   alt="Kumasi afternoon glow"
-                  caption="“Late sun over Kumasi: less powder, more glow. This is the face for garden parties in the city.”"
-                  comments="516"
+                  caption="Late sun over Kumasi: less powder, more glow — perfect for garden parties."
+                  comments="53"
                   icon="wb_sunny"
-                  label="Sun Ritual"
-                  likes="22.8K"
+                  label="Day Glow"
+                  likes="1.5K"
                   src={images.glass}
                 />
               </div>
             </div>
           </section>
 
-          <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="consultation-desk">
+          <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="location">
+            <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+              <div className="lg:col-span-5 space-y-space-md">
+                <div className="flex items-center gap-space-xs">
+                  <span className="material-symbols-outlined text-secondary text-[20px]">location_on</span>
+                  <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Find the studio</span>
+                </div>
+                <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface leading-tight">
+                  Kumasi — near KNUST
+                </h2>
+                <p className="font-body-md text-body-md text-on-surface-variant">
+                  Easy to reach from campus and the wider city. Come to the studio for portraits and bridal trials, or book a home call for wedding mornings across Kumasi.
+                </p>
+                <div className="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+                  <div className="flex items-start gap-space-xs">
+                    <span className="material-symbols-outlined text-secondary text-[18px]">home_pin</span>
+                    <span>{site.address}</span>
+                  </div>
+                  <div className="flex items-start gap-space-xs">
+                    <span className="material-symbols-outlined text-secondary text-[18px]">call</span>
+                    <a className="hover:text-secondary transition-colors" href={site.phoneHref}>
+                      {site.phone}
+                    </a>
+                  </div>
+                </div>
+                <a
+                  className="inline-flex items-center gap-space-xs font-label-caps text-label-caps uppercase tracking-wider text-secondary hover:text-on-surface transition-colors"
+                  href={site.mapsLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <span>Open in Google Maps</span>
+                  <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+                </a>
+              </div>
+              <div className="lg:col-span-7 overflow-hidden rounded-xl shadow-md border border-outline-variant/40 bg-surface-container">
+                <iframe
+                  title="Bonafide Makeover studio location — Kumasi near KNUST"
+                  src={site.mapsEmbed}
+                  className="h-[280px] w-full border-0 sm:h-[360px]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </section>
+
+          <section className="w-full px-margin-mobile lg:px-margin-desktop py-space-3xl" id="book">
             <div className="max-w-[1360px] mx-auto bg-surface-container-high/60 rounded-2xl p-space-xl lg:p-space-3xl shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-container/30 rounded-full blur-[90px] pointer-events-none" />
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start relative z-10">
                 <div className="lg:col-span-5 space-y-space-md">
                   <div className="flex items-center gap-space-xs">
                     <span className="material-symbols-outlined text-secondary text-[20px]">calendar_month</span>
-                    <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Private Reservation Desk</span>
+                    <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Bookings</span>
                   </div>
                   <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface leading-tight">
-                    Book the Kumasi studio
+                    Secure your bridal morning
                   </h2>
                   <p className="font-body-md text-body-md text-on-surface-variant">
-                    She is mostly in Kumasi. The chair is in Apemso, near KNUST — studio sittings and home bridal calls around the city come first. Send the date and the venue in Kumasi.
+                    Weekend dates fill quickly. Send your event date, venue, and look preference — you will get a confirmation call on {site.phone}.
                   </p>
                   <div className="space-y-space-xs pt-space-xs font-body-sm text-body-sm text-on-surface">
                     {[
-                      "Studio sittings in Apemso, most days",
+                      "Studio sittings in Kumasi most weekdays",
                       "Home bridal calls across Kumasi",
-                      "Traditional ceremony and white-wedding glam",
+                      "Touch-up kit available for long ceremony days",
                     ].map((item) => (
                       <div key={item} className="flex items-center gap-space-xs">
                         <span className="material-symbols-outlined text-secondary text-[18px]">done_all</span>
@@ -803,10 +859,10 @@ export function AureliaSite() {
                     ))}
                   </div>
                   <div className="p-space-md bg-surface-container-lowest/80 backdrop-blur rounded-xl shadow-sm">
-                    <span className="font-label-caps text-[10px] uppercase text-secondary tracking-widest">Studio &amp; calls</span>
-                    <p className="font-body-md text-on-surface font-medium mt-1">Apemso, Kumasi Near KNUST</p>
-                    <a className="font-body-sm text-[12px] text-on-surface-variant hover:text-secondary transition-colors" href="tel:+233554435360">
-                      +233 554435360
+                    <span className="font-label-caps text-[10px] uppercase text-secondary tracking-widest">Studio contact</span>
+                    <p className="font-body-md text-on-surface font-medium mt-1">{site.address}</p>
+                    <a className="font-body-sm text-[12px] text-on-surface-variant hover:text-secondary transition-colors" href={site.phoneHref}>
+                      {site.phone}
                     </a>
                   </div>
                 </div>
@@ -814,7 +870,7 @@ export function AureliaSite() {
                 <div className="lg:col-span-7 bg-surface-container-lowest p-space-lg lg:p-space-xl rounded-xl shadow-md">
                   {submitted ? (
                     <p className="font-title-editorial text-title-editorial italic text-on-surface">
-                      Thank you. Your booking note is with Bonafide Makeover in Kumasi. She will confirm by phone.
+                      Thank you. Your booking request is with Bonafide Makeover. Expect a confirmation call soon.
                     </p>
                   ) : (
                     <form className="space-y-space-md" onSubmit={onReserve}>
@@ -829,12 +885,12 @@ export function AureliaSite() {
                           />
                         </div>
                         <div className="space-y-1">
-                          <label className="font-label-caps text-label-caps uppercase text-on-surface-variant">Email Address *</label>
+                          <label className="font-label-caps text-label-caps uppercase text-on-surface-variant">Phone Number *</label>
                           <input
                             className="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary"
-                            placeholder="ama@email.com"
+                            placeholder="055 000 0000"
                             required
-                            type="email"
+                            type="tel"
                           />
                         </div>
                       </div>
@@ -845,33 +901,32 @@ export function AureliaSite() {
                             className="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary"
                             required
                             type="date"
-                            defaultValue="2025-06-21"
                           />
                         </div>
                         <div className="space-y-1">
-                          <label className="font-label-caps text-label-caps uppercase text-on-surface-variant">Destination / Venue</label>
+                          <label className="font-label-caps text-label-caps uppercase text-on-surface-variant">Venue in Kumasi</label>
                           <input
                             className="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary"
-                            placeholder="Apemso, Kumasi"
+                            placeholder="Home, church, or hotel"
                             type="text"
                           />
                         </div>
                         <div className="space-y-1">
-                          <label className="font-label-caps text-label-caps uppercase text-on-surface-variant">Service Type</label>
+                          <label className="font-label-caps text-label-caps uppercase text-on-surface-variant">Service</label>
                           <select className="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary">
-                            <option>Kumasi bridal morning</option>
-                            <option>Kumasi bridal party</option>
-                            <option>Kumasi engagement or portrait</option>
-                            <option>Traditional ceremony glam</option>
-                            <option>Portrait or photoshoot</option>
+                            <option>Bridal makeup</option>
+                            <option>Bridal party</option>
+                            <option>Traditional ceremony</option>
+                            <option>Engagement / portraits</option>
+                            <option>Occasion / soft glam</option>
                           </select>
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <label className="font-label-caps text-label-caps uppercase text-on-surface-variant">Aesthetic Vision &amp; Notes</label>
+                        <label className="font-label-caps text-label-caps uppercase text-on-surface-variant">Look notes</label>
                         <textarea
                           className="w-full bg-surface-container-low px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary"
-                          placeholder="Tell us the Kumasi venue, the gown or kente, and whether you need the Apemso studio or a home call..."
+                          placeholder="Share gown or kente colours, preferred finish (soft / glam), and whether you need the studio or a home call..."
                           rows={3}
                         />
                       </div>
@@ -932,15 +987,15 @@ export function AureliaSite() {
             <div className="flex items-center gap-space-xs">
               <span className="material-symbols-outlined text-secondary text-[18px]">stars</span>
               <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-                Mostly in Kumasi
+                Bridal glam · Kumasi
               </span>
             </div>
             <div className="flex flex-wrap items-center gap-space-xl font-headline-sm text-headline-sm text-on-surface opacity-75">
-              <span className="italic">Kumasi</span>
-              <span className="font-serif tracking-tighter">APEMSO</span>
-              <span className="font-serif tracking-widest text-title-editorial">KNUST</span>
-              <span className="font-serif italic text-title-editorial">BRIDAL</span>
-              <span className="font-serif tracking-widest text-title-editorial">KENTE</span>
+              <span className="italic">Bridal</span>
+              <span className="font-serif tracking-tighter">TRADITIONAL</span>
+              <span className="font-serif tracking-widest text-title-editorial">SOFT GLAM</span>
+              <span className="font-serif italic text-title-editorial">PORTRAITS</span>
+              <span className="font-serif tracking-widest text-title-editorial">HOME CALLS</span>
             </div>
           </div>
         </div>
@@ -949,52 +1004,50 @@ export function AureliaSite() {
             <div className="md:col-span-4 flex flex-col gap-space-sm">
               <span className="font-headline-md text-headline-md text-on-surface">Bonafide Makeover</span>
               <p className="font-body-md text-body-md text-on-surface-variant max-w-sm">
-                Bridal and occasion makeup from Apemso, Kumasi — near KNUST. She is mostly in Kumasi.
+                Bridal, traditional, and occasion makeup in Kumasi — near KNUST. Studio sittings and home bridal calls.
               </p>
               <div className="flex items-center gap-space-xs pt-space-xs">
                 <span className="material-symbols-outlined text-secondary text-[18px]">verified</span>
-                <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Mostly in Kumasi</span>
+                <span className="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Kumasi studio</span>
               </div>
             </div>
             <div className="md:col-span-3 flex flex-col gap-space-sm">
-              <span className="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Studio Location</span>
+              <span className="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Studio</span>
               <div className="space-y-space-xxs font-body-md text-body-md text-on-surface-variant">
-                <p>
-                  <span className="font-medium text-on-surface">Studio:</span> Apemso, Kumasi, near KNUST
-                </p>
-                <p>
-                  <span className="font-medium text-on-surface">Usually:</span> in Kumasi, at the studio
-                </p>
+                <p>{site.address}</p>
+                <a className="block hover:text-secondary transition-colors" href={site.mapsLink} rel="noopener noreferrer" target="_blank">
+                  View on Google Maps
+                </a>
               </div>
             </div>
             <div className="md:col-span-2 flex flex-col gap-space-sm">
-              <span className="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Navigation</span>
+              <span className="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Explore</span>
               <div className="flex flex-col space-y-space-xxs">
-                <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#masterpiece-gallery">
-                  Portfolio Archive
+                <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#portfolio">
+                  Portfolio
                 </a>
-                <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#bridal-suite">
-                  Bridal Suites
+                <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#services">
+                  Services
                 </a>
-                <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#editorial">
-                  Editorial looks
+                <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#location">
+                  Location
                 </a>
-                <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#consultation-desk">
-                  Tariffs &amp; Services
+                <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#book">
+                  Book
                 </a>
               </div>
             </div>
             <div className="md:col-span-3 flex flex-col gap-space-sm">
-              <span className="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Consultation Desk</span>
+              <span className="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Contact</span>
               <p className="font-body-sm text-body-sm text-on-surface-variant">
-                Kumasi studio bookings and home calls. Call or send the date.
+                Call or send your date to reserve a bridal morning.
               </p>
               <div className="flex flex-col gap-space-xs pt-space-xxs">
-                <a className="font-body-md text-body-md text-on-surface hover:text-secondary transition-colors underline decoration-secondary-container" href="mailto:dianawalter@bonafidemakeover.com">
-                  dianawalter@bonafidemakeover.com
+                <a className="font-body-md text-body-md text-on-surface hover:text-secondary transition-colors underline decoration-secondary-container" href={site.emailHref}>
+                  {site.email}
                 </a>
-                <a className="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="tel:+233554435360">
-                  +233 554435360
+                <a className="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href={site.phoneHref}>
+                  {site.phone}
                 </a>
               </div>
             </div>
@@ -1002,14 +1055,11 @@ export function AureliaSite() {
           <div className="pt-space-2xl mt-space-2xl flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant">
             <span className="font-body-sm text-body-sm">© 2026 Bonafide Makeover. All rights reserved.</span>
             <div className="flex items-center gap-space-lg">
-              <a className="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="#consultation-desk">
-                Client Terms
+              <a className="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors" href={site.instagramUrl} rel="noopener noreferrer" target="_blank">
+                Instagram
               </a>
-              <a className="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="#consultation-desk">
-                Privacy Charter
-              </a>
-              <a className="font-label-caps text-label-caps uppercase text-secondary hover:text-on-surface transition-colors" href="#consultation-desk">
-                Private Reservations
+              <a className="font-label-caps text-label-caps uppercase text-secondary hover:text-on-surface transition-colors" href="#book">
+                Book Now
               </a>
             </div>
           </div>
