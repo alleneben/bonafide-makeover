@@ -179,7 +179,7 @@ export function PortfolioGallery() {
     <section
       ref={sectionRef}
       className="relative w-full overflow-hidden px-margin-mobile py-space-3xl lg:px-margin-desktop"
-      id="portfolio"
+      id="gallery"
     >
       <div
         aria-hidden
@@ -204,8 +204,8 @@ export function PortfolioGallery() {
               Gallery
             </h2>
             <p className="gallery-header-copy font-body-md text-body-md text-on-surface-variant">
-              Bridal mornings, traditional ceremony glam, and soft evening looks —
-              finished across Kumasi.
+              More bridal mornings, traditional ceremony glam, and soft evening looks from recent
+              bookings.
             </p>
           </div>
 

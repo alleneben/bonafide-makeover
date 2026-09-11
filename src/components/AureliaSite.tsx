@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { nav, services, site, testimonials } from "@/lib/content";
 import { images } from "@/lib/images";
+import { FeaturedPortfolio } from "@/components/FeaturedPortfolio";
 import { PortfolioGallery } from "@/components/PortfolioGallery";
 
 const HEALING_TRACK_ID = "f1khMl3MpOY";
@@ -498,6 +499,8 @@ export function AureliaSite() {
               </div>
             </div>
           </section>
+
+          <FeaturedPortfolio />
 
           <PortfolioGallery />
 
