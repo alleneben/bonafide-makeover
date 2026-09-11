@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type TouchEvent } from "react";
 import {
   gallery,
   galleryFilters,
@@ -45,10 +45,38 @@ export function PortfolioGallery() {
   const [animTick, setAnimTick] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const labelId = useId();
 
   const items =
     filter === "all" ? gallery : gallery.filter((item) => item.category === filter);
+
+  function go(delta: number) {
+    setSlideDir(delta > 0 ? "next" : "prev");
+    setLightboxKey((k) => k + 1);
+    setActive((i) => {
+      if (i === null) return i;
+      return (i + delta + items.length) % items.length;
+    });
+  }
+
+  function onTouchStart(event: TouchEvent) {
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    touchStart.current = { x: touch.clientX, y: touch.clientY };
+  }
+
+  function onTouchEnd(event: TouchEvent) {
+    const start = touchStart.current;
+    const touch = event.changedTouches[0];
+    touchStart.current = null;
+    if (!start || !touch) return;
+
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+    if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+    go(dx < 0 ? 1 : -1);
+  }
 
   useEffect(() => {
     const root = sectionRef.current;
@@ -87,24 +115,34 @@ export function PortfolioGallery() {
       { rootMargin: "0px 0px -6% 0px", threshold: 0.08 },
     );
 
-    // Stagger via CSS custom property; force reflow so filter changes re-animate
     nodes.forEach((node, index) => {
       node.style.setProperty("--gallery-delay", `${Math.min(index, 10) * 70}ms`);
       observer.observe(node);
     });
 
-    // Reveal anything already in viewport on filter change
     requestAnimationFrame(() => {
       nodes.forEach((node) => {
         const rect = node.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+        if (rect.top < window.innerHeight * 0.98 && rect.bottom > 40) {
           node.classList.add("is-visible");
           observer.unobserve(node);
         }
       });
     });
 
-    return () => observer.disconnect();
+    const fallback = window.setTimeout(() => {
+      nodes.forEach((node) => {
+        if (!node.classList.contains("is-visible")) {
+          node.classList.add("is-visible");
+          observer.unobserve(node);
+        }
+      });
+    }, 900);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, [filter, animTick, items.length]);
 
   useEffect(() => {
@@ -124,15 +162,6 @@ export function PortfolioGallery() {
       window.removeEventListener("keydown", onKey);
     };
   }, [active, items.length]);
-
-  function go(delta: number) {
-    setSlideDir(delta > 0 ? "next" : "prev");
-    setLightboxKey((k) => k + 1);
-    setActive((i) => {
-      if (i === null) return i;
-      return (i + delta + items.length) % items.length;
-    });
-  }
 
   function changeFilter(next: FilterId) {
     if (next === filter) {
@@ -270,65 +299,97 @@ export function PortfolioGallery() {
         <div
           aria-label="Gallery lightbox"
           aria-modal="true"
-          className="gallery-lightbox fixed inset-0 z-[80] flex items-center justify-center bg-primary/92 px-4 py-8 backdrop-blur-md"
+          className="gallery-lightbox fixed inset-0 z-[80] flex flex-col bg-primary/94 touch-pan-y"
           role="dialog"
           onClick={() => setActive(null)}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
-          <button
-            aria-label="Close gallery"
-            className="gallery-lightbox-chrome absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center text-on-primary/80 transition-colors hover:text-on-primary md:right-8 md:top-8"
-            type="button"
-            onClick={() => setActive(null)}
-          >
-            <span className="material-symbols-outlined text-[28px]">close</span>
-          </button>
+          <div className="flex shrink-0 items-center justify-between px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6">
+            <p className="font-label-caps text-[11px] uppercase tracking-widest text-on-primary/60">
+              {active + 1} / {items.length}
+            </p>
+            <button
+              aria-label="Close gallery"
+              className="inline-flex h-11 w-11 items-center justify-center text-on-primary/80 transition-colors hover:text-on-primary"
+              type="button"
+              onClick={() => setActive(null)}
+            >
+              <span className="material-symbols-outlined text-[28px]">close</span>
+            </button>
+          </div>
 
-          <button
-            aria-label="Previous image"
-            className="gallery-lightbox-chrome absolute left-2 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center text-on-primary/70 transition-colors hover:text-on-primary sm:inline-flex md:left-6"
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              go(-1);
-            }}
-          >
-            <span className="material-symbols-outlined text-[32px]">chevron_left</span>
-          </button>
+          <div className="relative flex min-h-0 flex-1 items-center justify-center px-2 sm:px-14">
+            <button
+              aria-label="Previous image"
+              className="absolute left-1 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full bg-on-primary/10 text-on-primary backdrop-blur-sm transition-colors hover:bg-on-primary/20 sm:left-4"
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                go(-1);
+              }}
+            >
+              <span className="material-symbols-outlined text-[28px]">chevron_left</span>
+            </button>
 
-          <figure
-            key={lightboxKey}
-            className={`gallery-lightbox-figure gallery-lightbox-slide-${slideDir} relative flex max-h-[88vh] w-full max-w-5xl flex-col items-center gap-space-md`}
-            onClick={(event) => event.stopPropagation()}
-          >
-            <img
-              alt={activeItem.alt}
-              className="max-h-[78vh] w-auto max-w-full object-contain shadow-[0_30px_80px_rgba(0,0,0,0.45)]"
-              src={activeItem.src}
-            />
-            <figcaption className="gallery-lightbox-caption flex w-full max-w-3xl items-end justify-between gap-space-md px-1 text-on-primary">
-              <div>
+            <figure
+              key={lightboxKey}
+              className={`gallery-lightbox-figure gallery-lightbox-slide-${slideDir} relative flex max-h-full w-full max-w-5xl flex-col items-center justify-center gap-space-sm px-10 sm:px-4`}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <img
+                alt={activeItem.alt}
+                className="max-h-[min(68vh,720px)] w-auto max-w-full object-contain shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:max-h-[78vh]"
+                draggable={false}
+                src={activeItem.src}
+              />
+              <figcaption className="gallery-lightbox-caption w-full max-w-3xl px-1 text-center text-on-primary sm:text-left">
                 <p className="font-label-caps text-[10px] uppercase tracking-[0.2em] text-secondary-fixed">
                   {activeItem.category}
                 </p>
                 <p className="font-title-editorial text-title-editorial">{activeItem.title}</p>
-              </div>
-              <p className="font-label-caps text-[11px] uppercase tracking-widest text-on-primary/60">
-                {active + 1} / {items.length}
-              </p>
-            </figcaption>
-          </figure>
+                <p className="mt-1 font-body-sm text-[11px] text-on-primary/50 sm:hidden">
+                  Swipe or use arrows
+                </p>
+              </figcaption>
+            </figure>
 
-          <button
-            aria-label="Next image"
-            className="gallery-lightbox-chrome absolute right-2 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center text-on-primary/70 transition-colors hover:text-on-primary sm:inline-flex md:right-6"
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              go(1);
-            }}
+            <button
+              aria-label="Next image"
+              className="absolute right-1 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full bg-on-primary/10 text-on-primary backdrop-blur-sm transition-colors hover:bg-on-primary/20 sm:right-4"
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                go(1);
+              }}
+            >
+              <span className="material-symbols-outlined text-[28px]">chevron_right</span>
+            </button>
+          </div>
+
+          <div
+            className="flex shrink-0 items-center justify-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-2 sm:hidden"
+            onClick={(event) => event.stopPropagation()}
           >
-            <span className="material-symbols-outlined text-[32px]">chevron_right</span>
-          </button>
+            <button
+              aria-label="Previous image"
+              className="inline-flex min-h-11 min-w-[7.5rem] items-center justify-center gap-1 rounded-full border border-on-primary/25 px-4 font-label-caps text-[11px] uppercase tracking-widest text-on-primary"
+              type="button"
+              onClick={() => go(-1)}
+            >
+              <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+              Prev
+            </button>
+            <button
+              aria-label="Next image"
+              className="inline-flex min-h-11 min-w-[7.5rem] items-center justify-center gap-1 rounded-full bg-secondary-container px-4 font-label-caps text-[11px] uppercase tracking-widest text-on-secondary-container"
+              type="button"
+              onClick={() => go(1)}
+            >
+              Next
+              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </button>
+          </div>
         </div>
       )}
     </section>
