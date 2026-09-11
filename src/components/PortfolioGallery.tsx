@@ -299,7 +299,7 @@ export function PortfolioGallery() {
         <div
           aria-label="Gallery lightbox"
           aria-modal="true"
-          className="gallery-lightbox fixed inset-0 z-[80] flex flex-col bg-primary/94 touch-pan-y"
+          className="gallery-lightbox fixed inset-0 z-[80] flex flex-col bg-black/80 touch-pan-y"
           role="dialog"
           onClick={() => setActive(null)}
           onTouchStart={onTouchStart}
