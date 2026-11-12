@@ -1,5 +1,6 @@
 export const site = {
   brand: "Bonafide Makeover",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://bonafidemakeover.com",
   tagline: "Bridal & occasion makeup · Kumasi",
   phone: "+233 554435360",
   phoneHref: "tel:+233554435360",
