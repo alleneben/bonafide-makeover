@@ -5,36 +5,9 @@ import {
   gallery,
   galleryFilters,
   type GalleryCategory,
-  type GalleryItem,
 } from "@/lib/images";
 
 type FilterId = "all" | GalleryCategory;
-
-function spanClass(span?: GalleryItem["span"]) {
-  switch (span) {
-    case "feature":
-      return "md:col-span-2 md:row-span-2";
-    case "tall":
-      return "md:row-span-2";
-    case "wide":
-      return "md:col-span-2";
-    default:
-      return "";
-  }
-}
-
-function aspectClass(span?: GalleryItem["span"]) {
-  switch (span) {
-    case "feature":
-      return "aspect-[3/4] md:aspect-auto md:h-full md:min-h-[36rem]";
-    case "tall":
-      return "aspect-[3/4] md:aspect-auto md:h-full md:min-h-[28rem]";
-    case "wide":
-      return "aspect-[4/5] md:aspect-[16/10]";
-    default:
-      return "aspect-[3/4]";
-  }
-}
 
 export function PortfolioGallery() {
   const [filter, setFilter] = useState<FilterId>("all");
@@ -178,7 +151,7 @@ export function PortfolioGallery() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden px-margin-mobile py-space-3xl lg:px-margin-desktop"
+      className="relative w-full px-margin-mobile py-space-3xl lg:px-margin-desktop"
       id="gallery"
     >
       <div
@@ -247,12 +220,12 @@ export function PortfolioGallery() {
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:auto-rows-[12rem] md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-5"
+          className="columns-1 gap-3 sm:columns-2 sm:gap-4 lg:columns-3 lg:gap-5"
         >
           {items.map((item, index) => (
             <button
               key={`${filter}-${animTick}-${item.src}`}
-              className={`gallery-mosaic-item group relative overflow-hidden bg-surface-container text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary ${spanClass(item.span)}`}
+              className="gallery-mosaic-item group relative mb-3 w-full break-inside-avoid bg-surface-container text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary sm:mb-4 lg:mb-5"
               data-gallery-item
               type="button"
               onClick={() => {
@@ -261,10 +234,11 @@ export function PortfolioGallery() {
                 setActive(index);
               }}
             >
-              <div className={`gallery-mosaic-frame relative w-full overflow-hidden ${aspectClass(item.span)}`}>
+              <div className="gallery-mosaic-frame relative w-full overflow-hidden">
                 <img
                   alt={item.alt}
-                  className="gallery-mosaic-img h-full w-full object-cover object-center will-change-transform"
+                  className="gallery-mosaic-img"
+                  decoding="async"
                   loading={index < 4 ? "eager" : "lazy"}
                   src={item.src}
                 />
@@ -339,7 +313,7 @@ export function PortfolioGallery() {
             >
               <img
                 alt={activeItem.alt}
-                className="max-h-[min(68vh,720px)] w-auto max-w-full object-contain shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:max-h-[78vh]"
+                className="max-h-[min(78vh,900px)] w-auto max-w-full object-contain shadow-[0_30px_80px_rgba(0,0,0,0.45)]"
                 draggable={false}
                 src={activeItem.src}
               />

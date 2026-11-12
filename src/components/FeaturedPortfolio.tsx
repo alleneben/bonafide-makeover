@@ -65,10 +65,10 @@ export function FeaturedPortfolio() {
             }`}
             id="editorial"
           >
-            <div className="relative aspect-[3/4] overflow-hidden bg-surface-container">
+            <div className="relative overflow-hidden bg-surface-container">
               <img
                 alt="High fashion editorial featuring graphic gold eye makeup"
-                className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                className="block h-auto w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 src={images.editorial}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
@@ -106,10 +106,10 @@ export function FeaturedPortfolio() {
               }`}
               id="bridal-suite"
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-surface-container">
+              <div className="relative overflow-hidden bg-surface-container">
                 <img
                   alt="Romantic bridal makeup with sculpted updo and luminous skin"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="block h-auto w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   src={images.bridal}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
@@ -139,10 +139,10 @@ export function FeaturedPortfolio() {
                 visible("glow") ? "" : "hidden"
               }`}
             >
-              <div className="relative aspect-[16/11] overflow-hidden bg-surface-container">
+              <div className="relative overflow-hidden bg-surface-container">
                 <img
                   alt="Dewy glass skin and sculpted bridal hair"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="block h-auto w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   src={images.glass}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
@@ -171,10 +171,10 @@ export function FeaturedPortfolio() {
             }`}
           >
             <div className="grid grid-cols-1 items-center lg:grid-cols-12">
-              <div className="relative aspect-[16/10] overflow-hidden bg-surface-container lg:col-span-7">
+              <div className="relative overflow-hidden bg-surface-container lg:col-span-7">
                 <img
                   alt="Pearl and gold evening glam with luminous skin"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="block h-auto w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   src={images.glow}
                 />
                 <div className="absolute inset-0 hidden bg-gradient-to-r from-transparent via-transparent to-surface-container-lowest lg:block" />
